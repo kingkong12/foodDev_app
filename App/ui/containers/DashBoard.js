@@ -1,16 +1,22 @@
 import React from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, View, Image, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import Card from '../atoms/Card';
 class DashBoard extends React.Component {
   render() {
     return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Dash Board</Text>
-        <Icon name="rocket" size={44} />
+      <View style={styles.container}>
+        <Card />
       </View>
     );
   }
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignContent: 'flex-start',
+  },
+});
 export default DashBoard;

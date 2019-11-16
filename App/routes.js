@@ -3,18 +3,11 @@ import {Text, View, Image} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {createStackNavigator} from 'react-navigation-stack';
+
 import DashBoard from './ui/containers/DashBoard';
 import Cart from './ui/containers/Cart';
-
-class SettingsScreen extends React.Component {
-  render() {
-    return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Settings!</Text>
-      </View>
-    );
-  }
-}
+import Information from './ui/organism/Information';
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -27,7 +20,7 @@ const TabNavigator = createBottomTabNavigator(
     defaultNavigationOptions: ({navigation}) => ({
       tabBarIcon: ({focused, tintColor}) => {
         const {routeName} = navigation.state;
-        let iconName = 'rocket';
+        let iconName;
         if (routeName === 'MENU') {
           iconName = 'restaurant-menu';
         } else {
@@ -43,4 +36,15 @@ const TabNavigator = createBottomTabNavigator(
   },
 );
 
-export default createAppContainer(TabNavigator);
+const RootStack = createStackNavigator(
+  {
+    Main: TabNavigator,
+    MyModal: Information,
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+  },
+);
+
+export default createAppContainer(RootStack);

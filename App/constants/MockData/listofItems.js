@@ -21,7 +21,7 @@ const helathyItems = [
   },
   {
     id: 3,
-    itemName: 'Veggie Salad',
+    itemName: 'Salad',
     url:
       'https://www.thehealthy.com/wp-content/uploads/2019/05/vegetarian-buddha-bowl-800x450.jpg',
     information:

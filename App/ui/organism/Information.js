@@ -21,6 +21,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class Information extends React.Component {
   render() {
+    const {item} = this.props.navigation.state.params;
+    console.log('state', this.props.navigation.state.params);
     let imageSrc = 'https://www.yasmall.ae/media/2814/fastfood.jpg';
 
     return (
@@ -42,12 +44,19 @@ class Information extends React.Component {
         <View>
           <Image
             source={{
-              uri: imageSrc,
+              uri: item.url,
             }}
             style={styles.image}
           />
-          <View style={{}}>
-            <Text>Ingredients</Text>
+          <View style={styles.ItemDetails}>
+            <Text style={styles.headingText}> {item.itemName} </Text>
+            <Text style={styles.calorieTextStyle}>
+              {' '}
+              Calories: {item.calories}{' '}
+            </Text>
+            <View style={styles.divider} />
+            <Text style={styles.descriptionTextTitle}>Description </Text>
+            <Text style={styles.description}>{item.information}</Text>
           </View>
         </View>
       </Container>
@@ -63,8 +72,33 @@ const styles = StyleSheet.create({
     marginBottom: '2%',
     marginLeft: '2%',
   },
+  calorieTextStyle: {
+    fontSize: 18,
+    textTransform: 'uppercase',
+  },
   image: {
     width: '100%',
     height: '60%',
+  },
+  ItemDetails: {
+    flex: 1,
+    marginLeft: 10,
+  },
+  headingText: {
+    fontSize: 24,
+    textTransform: 'uppercase',
+  },
+  divider: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#e0e0e0',
+  },
+  descriptionTextTitle: {
+    fontSize: 20,
+    textTransform: 'uppercase',
+    textDecorationLine: 'underline',
+  },
+  description: {
+    marginTop: 20,
+    marginLeft: 15,
   },
 });

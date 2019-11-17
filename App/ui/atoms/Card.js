@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {Content} from 'native-base';
 import Button from './Buttons';
 
-const Card = ({itemInfo, buyItem, ...props}) => {
+const Card = ({item, itemInfo, buyItem, ...props}) => {
   let imageSrc = 'https://www.yasmall.ae/media/2814/fastfood.jpg';
 
   return (
@@ -13,13 +13,13 @@ const Card = ({itemInfo, buyItem, ...props}) => {
         <Image
           onPress={itemInfo}
           source={{
-            uri: imageSrc,
+            uri: item.url,
           }}
           style={styles.image}
         />
         <View style={styles.cardTextConatiner}>
-          <Text style={styles.cardText}>$56</Text>
-          <Button />
+          <Text style={styles.cardText}>£ {item.price}</Text>
+          <Button title={item.itemName} />
         </View>
       </TouchableOpacity>
     </View>

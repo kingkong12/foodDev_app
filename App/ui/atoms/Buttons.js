@@ -2,11 +2,11 @@ import React from 'react';
 import {Text, View, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const Button = props => {
+const Button = ({title, ...props}) => {
   return (
     <TouchableOpacity style={styles.container} onPress={() => {}}>
       <View style={styles.buttonStyle}>
-        <Text style={styles.buttonTexts}>Buy - Tomatos</Text>
+        <Text style={styles.buttonTexts}>{title}</Text>
       </View>
     </TouchableOpacity>
   );

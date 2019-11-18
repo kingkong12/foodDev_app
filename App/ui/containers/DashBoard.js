@@ -1,15 +1,15 @@
 import React from 'react';
-import {Text, ScrollView, View, Button, Image, StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import {View, Text, StyleSheet} from 'react-native';
 import Card from '../atoms/Card';
-import helathyItems from '../../constants/MockData/listofItems';
+
+import {connect} from 'react-redux';
 
 class DashBoard extends React.Component {
   render() {
-    const dummyIterator = [0, 1, 2, 3, 4, 5, 6, 3, 32, 4, 3, 3, 4, 3, 2, , 2];
+    const {Items} = this.props.menuItems;
     return (
       <View style={styles.container}>
-        {helathyItems.map((ary, index) => (
+        {Items.map((ary, index) => (
           <Card
             key={index}
             item={ary}
@@ -43,4 +43,16 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 });
-export default DashBoard;
+
+//  redux
+
+const mapStateToProps = state => {
+  return {
+    menuItems: state.menuItems,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null,
+)(DashBoard);

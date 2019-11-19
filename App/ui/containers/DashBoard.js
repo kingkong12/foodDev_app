@@ -1,10 +1,14 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import Card from '../atoms/Card';
-
+import {View, StyleSheet} from 'react-native';
+import Card from '../molecules/Card';
+import {addtoCartAction} from '../../Actions/dashbaord.action';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 class DashBoard extends React.Component {
+  addItemtoCart = item => {
+    this.props.addtoCartAction(item);
+  };
   render() {
     const {Items} = this.props.menuItems;
     return (
@@ -20,7 +24,9 @@ class DashBoard extends React.Component {
             }
             buyItem={() =>
               this.props.navigation.navigate('MyModal', {
+                addtoCart: true,
                 item: ary,
+                addItemtoCart: () => this.addItemtoCart(ary),
               })
             }
           />
@@ -54,5 +60,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  null,
+  {addtoCartAction},
 )(DashBoard);

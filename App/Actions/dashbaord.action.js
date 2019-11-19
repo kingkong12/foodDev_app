@@ -1,6 +1,6 @@
-export const addPlace = placeName => {
+export const addtoCartAction = item => {
   return {
-    type: 'MOCKACTION',
-    payload: placeName,
+    type: 'ADD_ITEM_TO_CART',
+    payload: item,
   };
 };

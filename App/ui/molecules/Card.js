@@ -1,12 +1,9 @@
 import React from 'react';
 import {Text, View, TouchableOpacity, Image, StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {Content} from 'native-base';
-import Button from './Buttons';
+
+import Button from '../atoms/Buttons';
 
 const Card = ({item, itemInfo, buyItem, ...props}) => {
-  let imageSrc = 'https://www.yasmall.ae/media/2814/fastfood.jpg';
-
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={buyItem} style={styles.card}>
@@ -51,9 +48,6 @@ const styles = StyleSheet.create({
 
     color: 'tomato',
     fontSize: 14,
-  },
-  buttonStyle: {
-    color: 'red',
   },
   cardTextConatiner: {
     height: '25%',

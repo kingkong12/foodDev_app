@@ -1,10 +1,11 @@
 import React from 'react';
 import {Text, StyleSheet, View, FlatList, Button, Image} from 'react-native';
 import CartCard from '../atoms/CartCard';
+import {connect} from 'react-redux';
 
 class Cart extends React.Component {
   render() {
-    const mockarry = [1, 2, 3];
+    const {cartItemsList} = this.props.cartItems;
     return (
       <View style={styles.container}>
         <View style={{flex: 0.5}}>
@@ -12,9 +13,9 @@ class Cart extends React.Component {
         </View>
         <View style={{flex: 9}}>
           <FlatList
-            data={mockarry}
+            data={cartItemsList}
             ItemSeparatorComponent={() => <View style={{height: 15}} />}
-            renderItem={({item}) => <CartCard />}
+            renderItem={({item}) => <CartCard item={item} />}
             keyExtractor={(item, index) => `${index}`}
           />
         </View>
@@ -28,6 +29,18 @@ class Cart extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    menuItems: state.menuItems,
+    cartItems: state.cartItems,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null,
+)(Cart);
 
 const styles = StyleSheet.create({
   container: {
@@ -55,8 +68,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Cart;
-
 /*  to dov
-hide versical scroll bar
+hide vertical scroll bar
 */

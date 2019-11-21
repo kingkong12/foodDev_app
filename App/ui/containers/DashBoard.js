@@ -2,7 +2,6 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import Card from '../molecules/Card';
 import {addtoCartAction} from '../../Actions/dashbaord.action';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 class DashBoard extends React.Component {

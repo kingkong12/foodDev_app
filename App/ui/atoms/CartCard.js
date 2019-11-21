@@ -1,26 +1,23 @@
 import React from 'react';
 import {Text, StyleSheet, View, Image} from 'react-native';
 
-const CartCard = props => {
+const CartCard = ({item, ...props}) => {
   return (
     <View style={styles.cartCard}>
       <View style={styles.imageContainer}>
         <Image
           onPress={() => {}}
-          source={{
-            uri:
-              'https://greatist.com/sites/default/files/lunch-wraps-feature-1800x1236.jpg',
-          }}
+          source={{uri: item.url}}
           style={styles.image}
         />
       </View>
       <View style={styles.descriptionContainer}>
         <View style={styles.deatils}>
-          <Text style={styles.itemNameText}>WRAP</Text>
+          <Text style={styles.itemNameText}>{item.itemName}</Text>
           <Text style={styles.itemQuantityText}> Quantity: 2 </Text>
         </View>
         <View style={styles.editDetails}>
-          <Text style={styles.itemPrice}>$5.99 </Text>
+          <Text style={styles.itemPrice}>£ {item.price}</Text>
           <Text style={styles.editPrice}>Edit</Text>
         </View>
       </View>

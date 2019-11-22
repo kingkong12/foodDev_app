@@ -15,7 +15,7 @@ const TabNavigator = createBottomTabNavigator(
     CART: Cart,
   },
   {
-    initialRouteName: 'CART',
+    initialRouteName: 'MENU',
     order: ['MENU', 'CART'],
     defaultNavigationOptions: ({navigation}) => ({
       tabBarIcon: ({focused, tintColor}) => {

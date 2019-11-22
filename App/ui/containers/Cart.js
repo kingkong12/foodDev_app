@@ -5,7 +5,15 @@ import {connect} from 'react-redux';
 
 class Cart extends React.Component {
   render() {
-    const {cartItemsList, list} = this.props.itemReducer;
+    const {cartItemsList} = this.props.itemReducer;
+    const total =
+      Math.round(
+        cartItemsList.reduce((accumulator, currentValue) => {
+          let itemPrice = currentValue.quantity * currentValue.price;
+          return accumulator + itemPrice;
+        }, 0) * 100,
+      ) / 100;
+
     return (
       <View style={styles.container}>
         <View style={{flex: 0.5}}>
@@ -25,7 +33,7 @@ class Cart extends React.Component {
         </View>
         <View style={{flex: 2, borderTopWidth: 1, borderColor: '#808080'}}>
           <Text style={styles.totalText}>
-            Total <Text style={styles.currency}> £ 50.57 </Text>
+            Total <Text style={styles.currency}> £ {total} </Text>
           </Text>
           <Button color="tomato" title="Checkout" onPress={() => {}} />
         </View>

@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  Image,
-  FlatList,
-  Dimensions,
-  Button,
-} from 'react-native';
+import {View, StyleSheet, Text, Image, FlatList, Button} from 'react-native';
 import Card from '../molecules/Card';
 import {addtoCartAction} from '../../Actions/dashbaord.action';
 import {connect} from 'react-redux';
@@ -51,7 +43,7 @@ class DashBoard extends React.Component {
                 this.props.navigation.navigate('MyModal', {
                   addtoCart: true,
                   item: item,
-                  addItemtoCart: () => this.addItemtoCart(ary),
+                  addItemtoCart: () => this.addItemtoCart(item),
                 })
               }
             />
@@ -59,25 +51,6 @@ class DashBoard extends React.Component {
           keyExtractor={(item, index) => `${index}`}
           numColumns={2}
         />
-
-        {/* {Items.map((ary, index) => (
-          <Card
-            key={index}
-            item={ary}
-            itemInfo={() =>
-              this.props.navigation.navigate('MyModal', {
-                item: ary,
-              })
-            }
-            buyItem={() =>
-              this.props.navigation.navigate('MyModal', {
-                addtoCart: true,
-                item: ary,
-                addItemtoCart: () => this.addItemtoCart(ary),
-              })
-            }
-          />
-        ))} */}
       </View>
     );
   }

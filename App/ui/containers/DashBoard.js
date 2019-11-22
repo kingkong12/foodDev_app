@@ -5,8 +5,17 @@ import {addtoCartAction} from '../../Actions/dashbaord.action';
 import {connect} from 'react-redux';
 
 class DashBoard extends React.Component {
-  addItemtoCart = item => {
-    this.props.addtoCartAction(item);
+  addItemtoCart = (newItemId, quantity) => {
+    let {cartItemsList} = this.props.itemReducer;
+
+    let foundInCart = cartItemsList.find(
+      cartItemId => cartItemId === newItemId,
+    );
+    if (foundInCart) {
+      alert('ITEM ALREADY ADDED TO CART');
+    } else {
+      this.props.addtoCartAction({id: newItemId, quantity});
+    }
   };
 
   card = props => {
@@ -43,7 +52,8 @@ class DashBoard extends React.Component {
                 this.props.navigation.navigate('MyModal', {
                   addtoCart: true,
                   item: item,
-                  addItemtoCart: () => this.addItemtoCart(item),
+                  addItemtoCart: quantity =>
+                    this.addItemtoCart(item.id, quantity),
                 })
               }
             />

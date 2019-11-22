@@ -5,19 +5,23 @@ import {connect} from 'react-redux';
 
 class Cart extends React.Component {
   render() {
-    const {cartItemsList} = this.props.itemReducer;
+    const {cartItemsList, list} = this.props.itemReducer;
     return (
       <View style={styles.container}>
         <View style={{flex: 0.5}}>
           <Text style={styles.headerStyle}> Cart </Text>
         </View>
         <View style={{flex: 9}}>
-          <FlatList
-            data={cartItemsList}
-            ItemSeparatorComponent={() => <View style={{height: 15}} />}
-            renderItem={({item}) => <CartCard item={item} />}
-            keyExtractor={(item, index) => `${index}`}
-          />
+          {cartItemsList.length ? (
+            <FlatList
+              data={cartItemsList}
+              ItemSeparatorComponent={() => <View style={{height: 15}} />}
+              renderItem={({item}) => <CartCard item={item} />}
+              keyExtractor={(item, index) => `${index}`}
+            />
+          ) : (
+            <Text style={styles.emptyText}> YOU CART IS EMPTY </Text>
+          )}
         </View>
         <View style={{flex: 2, borderTopWidth: 1, borderColor: '#808080'}}>
           <Text style={styles.totalText}>
@@ -64,6 +68,12 @@ const styles = StyleSheet.create({
   currency: {
     color: '#85BB65',
     fontSize: 24,
+  },
+  emptyText: {
+    color: '#000',
+    marginTop: 150,
+    textAlign: 'center',
+    opacity: 0.5,
   },
 });
 

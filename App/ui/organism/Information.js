@@ -9,7 +9,6 @@ import {
   Title,
   Right,
   Picker,
-  Form,
 } from 'native-base';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -88,7 +87,10 @@ class Information extends React.Component {
           </View>
           <TouchableOpacity
             style={styles.buyButtonContainer}
-            onPress={() => addItemtoCart()}>
+            onPress={() => {
+              let quantityInInteger = parseInt(this.state.selectedQuantity);
+              addItemtoCart(quantityInInteger);
+            }}>
             <View style={styles.buyButtonStyle}>
               <Text style={styles.buttonTexts}>BUY</Text>
             </View>

@@ -7,6 +7,7 @@ const initialState = {
 };
 
 const itemReducer = (state = initialState, action) => {
+  console.log('props  . . . . . .', state.cartItemsList);
   switch (action.type) {
     case 'ADD_ITEM_TO_CART':
       return {

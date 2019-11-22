@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 class Cart extends React.Component {
   render() {
-    const {cartItemsList} = this.props.cartItems;
+    const {cartItemsList} = this.props.itemReducer;
     return (
       <View style={styles.container}>
         <View style={{flex: 0.5}}>
@@ -32,7 +32,7 @@ class Cart extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    cartItems: state.cartItems,
+    itemReducer: state.itemReducer,
   };
 };
 

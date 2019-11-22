@@ -26,7 +26,7 @@ class DashBoard extends React.Component {
     );
   };
   render() {
-    const {list} = this.props.cartItems;
+    const {list} = this.props.itemReducer;
     return (
       <View style={styles.container}>
         <FlatList
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {
-    cartItems: state.cartItems,
+    itemReducer: state.itemReducer,
   };
 };
 

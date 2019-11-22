@@ -30,7 +30,7 @@ const helathyItems = [
     calories: '680',
   },
   {
-    id: 5,
+    id: 4,
     itemName: 'veggie wrap',
     url:
       'https://createmindfully.com/wp-content/uploads/2019/02/vegan-veggie-wrap-close-up.jpg',
@@ -40,7 +40,7 @@ const helathyItems = [
       'The Ultimate Veggie Wrap has herbed cream cheese, Havarti, and lots of fresh vegetables! Best of all, make it ahead for an easy lunch optin',
   },
   {
-    id: 4,
+    id: 5,
     itemName: 'Chicken Salad',
     url: 'https://greatist.com/sites/default/files/Fall%20Salads.jpg',
     information:
@@ -49,7 +49,7 @@ const helathyItems = [
     calories: '990',
   },
   {
-    id: 5,
+    id: 6,
     itemName: 'Juice',
     url:
       'https://www.thehealthy.com/wp-content/uploads/2016/06/01-soda-alternatives-orange-juice.jpg',

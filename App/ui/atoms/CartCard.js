@@ -14,7 +14,7 @@ const CartCard = ({item, ...props}) => {
       <View style={styles.descriptionContainer}>
         <View style={styles.deatils}>
           <Text style={styles.itemNameText}>{item.itemName}</Text>
-          <Text style={styles.itemQuantityText}> Quantity: 2 </Text>
+          <Text style={styles.itemQuantityText}>X {item.quantity}</Text>
         </View>
         <View style={styles.editDetails}>
           <Text style={styles.itemPrice}>£ {item.price}</Text>

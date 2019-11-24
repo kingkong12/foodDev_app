@@ -1,10 +1,9 @@
 import {createStore, combineReducers} from 'redux';
-import menuItems from './menuItems';
-import cartItems from './cart.reducer';
+
+import itemReducer from './cart.reducer';
 
 const rootReducer = combineReducers({
-  menuItems,
-  cartItems,
+  itemReducer,
 });
 
 const configureStore = () => {

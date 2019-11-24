@@ -1,59 +1,76 @@
 import React from 'react';
-import {Text, View, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
-import Button from '../atoms/Buttons';
-
-const Card = ({item, itemInfo, buyItem, ...props}) => {
+export const CustomButton = props => {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={buyItem} style={styles.card}>
-        <Image
-          onPress={itemInfo}
-          source={{
-            uri: item.url,
-          }}
-          style={styles.image}
-        />
-        <View style={styles.cardTextConatiner}>
-          <Text style={styles.cardText}>£ {item.price}</Text>
-          <Button title={item.itemName} />
+    <TouchableOpacity style={styles.buttonStyle} {...props}>
+      <Text style={styles.btnTextStyle}>{props.title}</Text>
+    </TouchableOpacity>
+  );
+};
+
+const Card = ({item, buyItem, itemInfo, ...props}) => {
+  return (
+    <View style={styles.cardContainer}>
+      <Image
+        source={{
+          uri: item.url,
+        }}
+        style={styles.cardImage}
+      />
+      <View style={styles.description}>
+        <Text style={styles.priceText}>
+          {item.itemName} - {'\u20AC'} {item.price}
+        </Text>
+        <View style={styles.buttonContainer}>
+          <CustomButton title="Info" onPress={itemInfo} />
+          <CustomButton title="Buy" onPress={buyItem} />
         </View>
-      </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    height: '40%',
-    width: '45%',
-    marginBottom: '2%',
-    marginLeft: '2%',
+  cardContainer: {
+    width: '48%',
+    marginBottom: '5%',
+    marginHorizontal: '1%',
   },
-  card: {
-    backgroundColor: '#fff',
+  imageConatiner: {
     flex: 1,
+    width: '40%',
+    height: '40%',
   },
-  image: {
+  cardImage: {
     width: '100%',
-    height: '75%',
+    height: 200,
   },
-  cardFooter: {
-    textAlign: 'center',
+  description: {
+    alignSelf: 'center',
   },
-  cardText: {
-    textTransform: 'uppercase',
-    height: '50%',
-    textAlign: 'center',
-
+  priceText: {
     color: 'tomato',
+    marginVertical: 8,
+    textAlign: 'center',
     fontSize: 14,
   },
-  cardTextConatiner: {
-    height: '25%',
-    flex: 1,
-    justifyContent: 'space-between',
-    alignContent: 'space-between',
+  buttonContainer: {
+    flexDirection: 'row',
+
+    width: '100%',
+  },
+  buttonStyle: {
+    borderWidth: 1,
+    flexGrow: 1,
+    marginHorizontal: 3,
+    borderColor: 'tomato',
+    borderRadius: 8,
+  },
+  btnTextStyle: {
+    textAlign: 'center',
+    color: 'tomato',
   },
 });
+
 export default Card;

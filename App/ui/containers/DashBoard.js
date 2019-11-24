@@ -1,35 +1,65 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Text, Image, FlatList, Button} from 'react-native';
 import Card from '../molecules/Card';
 import {addtoCartAction} from '../../Actions/dashbaord.action';
 import {connect} from 'react-redux';
 
 class DashBoard extends React.Component {
-  addItemtoCart = item => {
-    this.props.addtoCartAction(item);
+  addItemtoCart = (item, quantity) => {
+    let {cartItemsList} = this.props.itemReducer;
+
+    let foundInCart = cartItemsList.find(
+      cartItemId => cartItemId.id === item.id,
+    );
+    if (foundInCart) {
+      alert('ITEM ALREADY ADDED TO CART');
+    } else {
+      this.props.addtoCartAction({...item, quantity});
+    }
+  };
+
+  card = props => {
+    return (
+      <View style={styles.cardContainer}>
+        <Image
+          source={{
+            uri: 'https://facebook.github.io/react/logo-og.png',
+          }}
+          style={styles.cardImage}
+        />
+        <View style={styles.description}>
+          <Text> Price {'\u20AC'} 59 </Text>
+          <Button title="button" />
+        </View>
+      </View>
+    );
   };
   render() {
-    const {Items} = this.props.menuItems;
+    const {list} = this.props.itemReducer;
     return (
       <View style={styles.container}>
-        {Items.map((ary, index) => (
-          <Card
-            key={index}
-            item={ary}
-            itemInfo={() =>
-              this.props.navigation.navigate('MyModal', {
-                item: ary,
-              })
-            }
-            buyItem={() =>
-              this.props.navigation.navigate('MyModal', {
-                addtoCart: true,
-                item: ary,
-                addItemtoCart: () => this.addItemtoCart(ary),
-              })
-            }
-          />
-        ))}
+        <FlatList
+          data={list}
+          renderItem={({item}) => (
+            <Card
+              item={item}
+              itemInfo={() =>
+                this.props.navigation.navigate('MyModal', {
+                  item: item,
+                })
+              }
+              buyItem={() =>
+                this.props.navigation.navigate('MyModal', {
+                  addtoCart: true,
+                  item: item,
+                  addItemtoCart: quantity => this.addItemtoCart(item, quantity),
+                })
+              }
+            />
+          )}
+          keyExtractor={(item, index) => `${index}`}
+          numColumns={2}
+        />
       </View>
     );
   }
@@ -38,14 +68,27 @@ class DashBoard extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 12,
-    flexDirection: 'row',
     backgroundColor: '#fff',
-    flexWrap: 'wrap',
+    alignContent: 'center',
+    marginTop: '2%',
+    marginHorizontal: '1%',
   },
-  scrollView: {
+  cardContainer: {
+    width: '48%',
+    marginBottom: '5%',
+    marginHorizontal: '1%',
+  },
+  imageConatiner: {
     flex: 1,
+    width: '40%',
+    height: '40%',
+  },
+  cardImage: {
     width: '100%',
+    height: 200,
+  },
+  description: {
+    alignSelf: 'center',
   },
 });
 
@@ -53,7 +96,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {
-    menuItems: state.menuItems,
+    itemReducer: state.itemReducer,
   };
 };
 

@@ -5,23 +5,35 @@ import {connect} from 'react-redux';
 
 class Cart extends React.Component {
   render() {
-    const {cartItemsList} = this.props.cartItems;
+    const {cartItemsList} = this.props.itemReducer;
+    const total =
+      Math.round(
+        cartItemsList.reduce((accumulator, currentValue) => {
+          let itemPrice = currentValue.quantity * currentValue.price;
+          return accumulator + itemPrice;
+        }, 0) * 100,
+      ) / 100;
+
     return (
       <View style={styles.container}>
         <View style={{flex: 0.5}}>
           <Text style={styles.headerStyle}> Cart </Text>
         </View>
         <View style={{flex: 9}}>
-          <FlatList
-            data={cartItemsList}
-            ItemSeparatorComponent={() => <View style={{height: 15}} />}
-            renderItem={({item}) => <CartCard item={item} />}
-            keyExtractor={(item, index) => `${index}`}
-          />
+          {cartItemsList.length ? (
+            <FlatList
+              data={cartItemsList}
+              ItemSeparatorComponent={() => <View style={{height: 15}} />}
+              renderItem={({item}) => <CartCard item={item} />}
+              keyExtractor={(item, index) => `${index}`}
+            />
+          ) : (
+            <Text style={styles.emptyText}> YOU CART IS EMPTY </Text>
+          )}
         </View>
         <View style={{flex: 2, borderTopWidth: 1, borderColor: '#808080'}}>
           <Text style={styles.totalText}>
-            Total <Text style={styles.currency}> £ 50.57 </Text>
+            Total <Text style={styles.currency}> £ {total} </Text>
           </Text>
           <Button color="tomato" title="Checkout" onPress={() => {}} />
         </View>
@@ -32,8 +44,7 @@ class Cart extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    menuItems: state.menuItems,
-    cartItems: state.cartItems,
+    itemReducer: state.itemReducer,
   };
 };
 
@@ -65,6 +76,12 @@ const styles = StyleSheet.create({
   currency: {
     color: '#85BB65',
     fontSize: 24,
+  },
+  emptyText: {
+    color: '#000',
+    marginTop: 150,
+    textAlign: 'center',
+    opacity: 0.5,
   },
 });
 

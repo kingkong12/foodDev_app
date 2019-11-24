@@ -153,7 +153,6 @@ const styles = StyleSheet.create({
   },
   buyButtonContainer: {
     marginTop: 10,
-    backgroundColor: 'lightblue',
   },
   buyButtonStyle: {
     backgroundColor: 'tomato',

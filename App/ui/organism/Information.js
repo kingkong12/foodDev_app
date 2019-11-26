@@ -79,10 +79,12 @@ class Information extends React.Component {
               </View>
             </View>
              </View> 
+             { !addtoCart  &&(
             <View style={styles.descriptionContainer}>
               <Text style={styles.descriptionTextTitle}>Description</Text>
               <Text style={styles.description}>{item.information}</Text>
-            </View>
+            </View>)}
+            {addtoCart && (
           <Button  
           title="Press me"
           color={'tomato'}
@@ -90,7 +92,7 @@ class Information extends React.Component {
               let quantityInInteger = parseInt(this.state.selectedQuantity);
               addItemtoCart(quantityInInteger);
             }}
-          />
+          />)}
         </View>
       </Container>
       </View>

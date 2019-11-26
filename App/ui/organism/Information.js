@@ -1,5 +1,12 @@
 import React from 'react';
-import {Text, View, TouchableOpacity,Button, Image, StyleSheet} from 'react-native';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Button,
+  Image,
+  StyleSheet,
+} from 'react-native';
 import {
   Container,
   Left,
@@ -34,67 +41,69 @@ class Information extends React.Component {
       item,
     } = this.props.navigation.state.params;
     return (
-      <View style={{flex:1}}> 
-      <Container>
-        <Header style={{backgroundColor: '#fff'}}>
-          <Left>
-            <NativeButton
-              transparent
-              onPress={() => this.props.navigation.goBack()}>
-              <Icon name="close" size={40} color={'#000'} />
-            </NativeButton>
-          </Left>
-          <Body>
-            <Title style={{color: '#000'}}>INFO</Title>
-          </Body>
-          <Right />
-        </Header>
+      <View style={{flex: 1}}>
+        <Container>
+          <Header style={{backgroundColor: '#fff'}}>
+            <Left>
+              <NativeButton
+                transparent
+                onPress={() => this.props.navigation.goBack()}>
+                <Icon name="close" size={40} color={'#000'} />
+              </NativeButton>
+            </Left>
+            <Body>
+              <Title style={{color: '#000'}}>INFO</Title>
+            </Body>
+            <Right />
+          </Header>
 
-        <View>
-          <Image
-            source={{
-              uri: item.url,
-            }}
-            style={styles.image}
-          />
-          <View style={styles.ItemDetails}>
-            <Text style={styles.headingText}> {item.itemName} </Text>
-            {addtoCart
-              ? this.displayCalories(item.calories)
-              : this.displayPrice(item.price)}
-            <View style={styles.quantitystyles}>
-              <Text sty={styles.description}> Select Quantity </Text>
-              <View style={styles.pickerStyle}>
-                <Picker
-                  mode="dropdown"
-                  style={{width: undefined}}
-                  selectedValue={this.state.selectedQuantity}
-                  onValueChange={value =>
-                    this.setState({selectedQuantity: value})
-                  }>
-                  <Picker.Item label="1" value="1" />
-                  <Picker.Item label="2" value="2" />
-                  <Picker.Item label="3" value="3" />
-                </Picker>
+          <View>
+            <Image
+              source={{
+                uri: item.url,
+              }}
+              style={styles.image}
+            />
+            <View style={styles.ItemDetails}>
+              <Text style={styles.headingText}> {item.itemName} </Text>
+              {addtoCart
+                ? this.displayCalories(item.calories)
+                : this.displayPrice(item.price)}
+              <View style={styles.quantitystyles}>
+                <Text sty={styles.description}> Select Quantity </Text>
+                <View style={styles.pickerStyle}>
+                  <Picker
+                    mode="dropdown"
+                    style={{width: undefined}}
+                    selectedValue={this.state.selectedQuantity}
+                    onValueChange={value =>
+                      this.setState({selectedQuantity: value})
+                    }>
+                    <Picker.Item label="1" value="1" />
+                    <Picker.Item label="2" value="2" />
+                    <Picker.Item label="3" value="3" />
+                  </Picker>
+                </View>
               </View>
             </View>
-             </View> 
-             { !addtoCart  &&(
-            <View style={styles.descriptionContainer}>
-              <Text style={styles.descriptionTextTitle}>Description</Text>
-              <Text style={styles.description}>{item.information}</Text>
-            </View>)}
+            {!addtoCart && (
+              <View style={styles.descriptionContainer}>
+                <Text style={styles.descriptionTextTitle}>Description</Text>
+                <Text style={styles.description}>{item.information}</Text>
+              </View>
+            )}
             {addtoCart && (
-          <Button  
-          title="Press me"
-          color={'tomato'}
-          onPress={() => {
-              let quantityInInteger = parseInt(this.state.selectedQuantity);
-              addItemtoCart(quantityInInteger);
-            }}
-          />)}
-        </View>
-      </Container>
+              <Button
+                title="Press me"
+                color={'tomato'}
+                onPress={() => {
+                  let quantityInInteger = parseInt(this.state.selectedQuantity);
+                  addItemtoCart(quantityInInteger);
+                }}
+              />
+            )}
+          </View>
+        </Container>
       </View>
     );
   }
@@ -166,7 +175,6 @@ const styles = StyleSheet.create({
   },
   descriptionContainer: {
     flexGrow: 1,
-     marginLeft: 10, 
-  }
-
+    marginLeft: 10,
+  },
 });

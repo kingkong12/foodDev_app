@@ -3,9 +3,13 @@ import {Text, StyleSheet, View, FlatList, Button, Image} from 'react-native';
 import CartCard from '../atoms/CartCard';
 import {connect} from 'react-redux';
 
+//  before you look code of this components , i advise you to look code of dashboard.js
+
 class Cart extends React.Component {
   render() {
+    // this is a js syntax which will help us get list o fitems added into cart
     const {cartItemsList} = this.props.itemReducer;
+    //  total is fucntio  which will calcualte total of amounts in outr cart
     const total =
       Math.round(
         cartItemsList.reduce((accumulator, currentValue) => {
@@ -14,6 +18,9 @@ class Cart extends React.Component {
         }, 0) * 100,
       ) / 100;
 
+    // retrn mehtoud spits out ui
+    // it is also advisisble to look at  cartCard.js  code,
+    //cartCard.j it is being imported into thi sfile and rendered inside
     return (
       <View style={styles.container}>
         <View style={{flex: 0.5}}>
@@ -42,6 +49,7 @@ class Cart extends React.Component {
   }
 }
 
+// redux
 const mapStateToProps = state => {
   return {
     itemReducer: state.itemReducer,
@@ -84,7 +92,3 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
 });
-
-/*  to dov
-hide vertical scroll bar
-*/

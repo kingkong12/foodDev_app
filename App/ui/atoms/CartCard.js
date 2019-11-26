@@ -1,6 +1,8 @@
 import React from 'react';
 import {Text, StyleSheet, View, Image} from 'react-native';
 
+// this component is used incart.js
+
 const CartCard = ({item, ...props}) => {
   return (
     <View style={styles.cartCard}>

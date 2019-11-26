@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {Text, View, TouchableOpacity,Button, Image, StyleSheet} from 'react-native';
 import {
   Container,
   Left,
@@ -34,6 +34,7 @@ class Information extends React.Component {
       item,
     } = this.props.navigation.state.params;
     return (
+      <View style={{flex:1}}> 
       <Container>
         <Header style={{backgroundColor: '#fff'}}>
           <Left>
@@ -77,26 +78,22 @@ class Information extends React.Component {
                 </Picker>
               </View>
             </View>
-            {!addtoCart ? (
-              <>
-                <View style={styles.divider} />
-                <Text style={styles.descriptionTextTitle}>Description</Text>
-                <Text style={styles.description}>{item.information}</Text>
-              </>
-            ) : null}
-          </View>
-          <TouchableOpacity
-            style={styles.buyButtonContainer}
-            onPress={() => {
+             </View> 
+            <View style={styles.descriptionContainer}>
+              <Text style={styles.descriptionTextTitle}>Description</Text>
+              <Text style={styles.description}>{item.information}</Text>
+            </View>
+          <Button  
+          title="Press me"
+          color={'tomato'}
+          onPress={() => {
               let quantityInInteger = parseInt(this.state.selectedQuantity);
               addItemtoCart(quantityInInteger);
-            }}>
-            <View style={styles.buyButtonStyle}>
-              <Text style={styles.buttonTexts}>BUY</Text>
-            </View>
-          </TouchableOpacity>
+            }}
+          />
         </View>
       </Container>
+      </View>
     );
   }
 }
@@ -165,4 +162,9 @@ const styles = StyleSheet.create({
     color: 'white',
     marginLeft: 10,
   },
+  descriptionContainer: {
+    flexGrow: 1,
+     marginLeft: 10, 
+  }
+
 });

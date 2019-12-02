@@ -1,5 +1,4 @@
 import React from 'react';
-import {Text, View, Image} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -11,6 +10,7 @@ import Information from './ui/organism/Information';
 
 const TabNavigator = createBottomTabNavigator(
   {
+    //these are 2 important screen in our app.
     MENU: DashBoard,
     CART: Cart,
   },
@@ -38,6 +38,8 @@ const TabNavigator = createBottomTabNavigator(
 
 const RootStack = createStackNavigator(
   {
+    // Root stack holds all the modla in our app
+    // Tabnavigator in nested inside so that modal screens have access to moda screens
     Main: TabNavigator,
     MyModal: Information,
   },

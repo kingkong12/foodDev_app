@@ -1,9 +1,8 @@
 import React from 'react';
 import {Text, StyleSheet, View, Image} from 'react-native';
 
-// this component is used incart.js
-
-const CartCard = ({item, ...props}) => {
+const CartCard = ({item, showModalFun, ...props}) => {
+  let itemPrice = item.price * item.quantity;
   return (
     <View style={styles.cartCard}>
       <View style={styles.imageContainer}>
@@ -19,8 +18,10 @@ const CartCard = ({item, ...props}) => {
           <Text style={styles.itemQuantityText}>X {item.quantity}</Text>
         </View>
         <View style={styles.editDetails}>
-          <Text style={styles.itemPrice}>£ {item.price}</Text>
-          <Text style={styles.editPrice}>Edit</Text>
+          <Text style={styles.itemPrice}>£ {itemPrice}</Text>
+          <Text style={styles.editPrice} onPress={() => showModalFun(item)}>
+            Edit
+          </Text>
         </View>
       </View>
     </View>

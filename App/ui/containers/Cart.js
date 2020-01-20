@@ -32,6 +32,8 @@ class Cart extends React.Component {
     }
   }
 
+  openViewOrderScreen = props => this.props.navigation.navigate('ViewOrder');
+
   renderModal = () => {
     return (
       <Modal
@@ -99,7 +101,6 @@ class Cart extends React.Component {
   };
 
   render() {
-    console.log('state, ', this.state.itemDetails);
     const {cartItemsList} = this.props.itemReducer;
     const total =
       Math.round(
@@ -107,7 +108,9 @@ class Cart extends React.Component {
           let itemPrice = currentValue.quantity * currentValue.price;
           return accumulator + itemPrice;
         }, 0) * 100,
-      ) / 100;
+      ) / 100 || 0;
+    const buttonisDisabled = total > 0 ? false : true;
+    console.log('total : ; : ; ', total, typeof total);
     const transparent = this.state.showModal ? {opacity: 0.5} : '';
     return (
       <View style={[styles.container, transparent]}>
@@ -141,7 +144,12 @@ class Cart extends React.Component {
           <Text style={styles.totalText}>
             Total <Text style={styles.currency}> £ {total} </Text>
           </Text>
-          <Button color="tomato" title="Checkout" onPress={() => {}} />
+          <Button
+            color="tomato"
+            title="Checkout"
+            disabled={buttonisDisabled}
+            onPress={() => this.openViewOrderScreen(this.props)}
+          />
         </View>
       </View>
     );

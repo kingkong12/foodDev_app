@@ -52,5 +52,5 @@ const RootStack = createStackNavigator(
 );
 
 export default createAppContainer(RootStack);
-// build by Vscode: vasanimithil999@gmail.coms
+// Project by  vasanimithil999@gmail.com
 // - Mithil Vasani

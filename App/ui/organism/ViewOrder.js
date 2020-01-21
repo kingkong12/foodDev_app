@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Dimensions} from 'react-native';
 import {StyleSheet, Text, View} from 'react-native';
+import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 
 export default class ViewOrder extends Component {
   render() {
@@ -15,19 +16,46 @@ export default class ViewOrder extends Component {
         </View>
         <View style={styles.body}>
           <View style={styles.detailContainer}>
-            <Text style={styles.restaurentDetailHeader}>
-              Restaurent Deatils
-            </Text>
+            <Text style={styles.fieldHeader}>Restaurent Deatils</Text>
             <View style={{flexDirection: 'row'}}>
-              <Text style={styles.restauerentName}>Name :</Text>
+              <Text style={styles.label}>Name :</Text>
               <Text> {mockData.name}</Text>
             </View>
             <View style={styles.restaurentAddressConatiner}>
-              <Text style={styles.restauerentName}>Address :</Text>
+              <Text style={styles.label}>Address :</Text>
               <View style={styles.addressField}>
                 <Text> {mockData.address}</Text>
               </View>
             </View>
+          </View>
+          <View style={styles.progressbarContainer}>
+            <Text style={styles.fieldHeader}>Order Deatils</Text>
+            <Text style={styles.label}>Order ID : </Text>
+            <Text style={styles.label}>Delievery Day & Time:</Text>
+            <ProgressSteps borderStyle="1" activeStep={2}>
+              <ProgressStep
+                previousBtnDisabled
+                nextBtnDisabled
+                nextBtnText=""
+                previousBtnText=""
+                label="Place Order"
+              />
+              <ProgressStep
+                previousBtnDisabled
+                nextBtnDisabled
+                nextBtnText=""
+                previousBtnText=""
+                label="Preparing Order"
+              />
+              <ProgressStep
+                previousBtnDisabled
+                nextBtnDisabled
+                nextBtnText=""
+                previousBtnText=""
+                finishBtnText=""
+                label="Delievery"
+              />
+            </ProgressSteps>
           </View>
         </View>
       </View>
@@ -58,7 +86,7 @@ const styles = StyleSheet.create({
   body: {
     margin: 15,
   },
-  restaurentDetailHeader: {
+  fieldHeader: {
     color: '#777777',
     fontWeight: 'bold',
     paddingBottom: 8,
@@ -74,7 +102,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     //    borderWidth: 1,
   },
-  restauerentName: {
+  label: {
     color: '#777777',
     paddingBottom: 8,
     fontSize: 16,
@@ -84,5 +112,9 @@ const styles = StyleSheet.create({
   },
   addressField: {
     flexShrink: 1,
+  },
+  progressbarContainer: {
+    flex: 1,
+    paddingTop: 8,
   },
 });

@@ -7,6 +7,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import DashBoard from './ui/containers/DashBoard';
 import Cart from './ui/containers/Cart';
 import Information from './ui/organism/Information';
+import ViewOrder from './ui/organism/ViewOrder.js';
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -42,6 +43,7 @@ const RootStack = createStackNavigator(
     // Tabnavigator in nested inside so that modal screens have access to moda screens
     Main: TabNavigator,
     MyModal: Information,
+    ViewOrder: ViewOrder,
   },
   {
     mode: 'modal',
@@ -50,3 +52,5 @@ const RootStack = createStackNavigator(
 );
 
 export default createAppContainer(RootStack);
+// Project by  vasanimithil999@gmail.com
+// - Mithil Vasani

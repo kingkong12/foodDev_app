@@ -19,10 +19,8 @@ class DashBoard extends React.Component {
     }
   };
 
- render() {
+  render() {
     const {list} = this.props.itemReducer;
-    //  render() is a react method w2which will spit out ui in mobile devices
-    //  faltlist :  is react native fucntin which will act like .mapfucntion but a better versiob for mobile devices
 
     return (
       <View style={styles.container}>

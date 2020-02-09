@@ -23,7 +23,7 @@ const Card = ({item, buyItem, itemInfo, ...props}) => {
           {item.itemName} - £ {item.price}
         </Text>
         <View style={styles.buttonContainer}>
-          <CustomButton title="Info" onPress={itemInfo} />
+          {/* <CustomButton title="Info" onPress={itemInfo} /> */}
           <CustomButton title="Buy" onPress={buyItem} />
         </View>
       </View>

@@ -40,117 +40,219 @@ class Information extends React.Component {
       addItemtoCart,
       item,
     } = this.props.navigation.state.params;
+
     return (
       <View style={{flex: 1}}>
-        <Container>
-          <Header style={{backgroundColor: '#fff'}}>
-            <Left>
-              <NativeButton
-                transparent
-                onPress={() => this.props.navigation.goBack()}>
-                <Icon name="close" size={40} color={'#000'} />
-              </NativeButton>
-            </Left>
-            <Body>
-              <Title style={{color: '#000'}}>INFO</Title>
-            </Body>
-            <Right />
-          </Header>
+        <View style={styles.imageConatier}>
+          <Image
+            source={{
+              uri: item.url,
+            }}
+            style={styles.imageStyling}
+          />
+        </View>
 
-          <View>
-            <Image
-              source={{
-                uri: item.url,
-              }}
-              style={styles.image}
-            />
-            <View style={styles.ItemDetails}>
-              <Text style={styles.headingText}> {item.itemName} </Text>
-              {addtoCart
-                ? this.displayCalories(item.calories)
-                : this.displayPrice(item.price)}
-              <View style={styles.quantitystyles}>
-                <Text sty={styles.description}> Select Quantity </Text>
-                <View style={styles.pickerStyle}>
-                  <Picker
-                    mode="dropdown"
-                    style={{width: undefined}}
-                    selectedValue={this.state.selectedQuantity}
-                    onValueChange={value =>
-                      this.setState({selectedQuantity: value})
-                    }>
-                    <Picker.Item label="1" value="1" />
-                    <Picker.Item label="2" value="2" />
-                    <Picker.Item label="3" value="3" />
-                  </Picker>
-                </View>
+        <View style={styles.itemsDetails}>
+          <View style={styles.itemPriceDetail}>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                paddingTop: 16,
+                paddingBottom: 4,
+              }}>
+              <Text style={styles.itemName}>{item.itemName.toUpperCase()}</Text>
+              <Text style={styles.itemPrice}> £ {item.price} </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                paddingTop: 4,
+                paddingBottom: 16,
+              }}>
+              <Text style={styles.itemName}>{'Quantity'.toUpperCase()} </Text>
+
+              <View style={styles.pickerStyle}>
+                <Picker
+                  mode="dropdown"
+                  style={{width: 40}}
+                  selectedValue={this.state.selectedQuantity}
+                  onValueChange={value =>
+                    this.setState({selectedQuantity: value})
+                  }>
+                  <Picker.Item label="1" value="1" />
+                  <Picker.Item label="2" value="2" />
+                  <Picker.Item label="3" value="3" />
+                </Picker>
               </View>
             </View>
-            {!addtoCart && (
-              <View style={styles.descriptionContainer}>
-                <Text style={styles.descriptionTextTitle}>Description</Text>
-                <Text style={styles.description}>{item.information}</Text>
-              </View>
-            )}
+          </View>
+          <View style={styles.descriptionContainer}>
+            <Text style={styles.itemName}>DESCRIPTION </Text>
+            <View style={{marginTop: 8}}>
+              <Text style={styles.itemsDescription}>{item.information}</Text>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.footerButtons}>
+          <View style={styles.buttonConatiner}>
+            <TouchableOpacity
+              style={styles.transparentBUtton}
+              onPress={() => this.props.navigation.goBack()}>
+              <Text style={styles.buttonText}>Cancel</Text>
+            </TouchableOpacity>
             {addtoCart && (
-              <Button
-                title="Press me"
-                color={'tomato'}
+              <TouchableOpacity
+                style={styles.coloredButton}
                 onPress={() => {
                   let quantityInInteger = parseInt(this.state.selectedQuantity);
                   addItemtoCart(quantityInInteger);
-                }}
-              />
+                }}>
+                <Text style={styles.buttonText}>Add to Cart</Text>
+              </TouchableOpacity>
             )}
           </View>
-        </Container>
+        </View>
       </View>
     );
+
+    // return (
+    //   <View style={{flex: 1}}>
+    //     <Container>
+    //       <Header style={{backgroundColor: '#fff'}}>
+    //         <Left>
+    //           <NativeButton
+    //             transparent
+    //             onPress={() => this.props.navigation.goBack()}>
+    //             <Icon name="close" size={40} color={'#000'} />
+    //           </NativeButton>
+    //         </Left>
+    //         <Body>
+    //           <Title style={{color: '#000'}}>INFO</Title>
+    //         </Body>
+    //         <Right />
+    //       </Header>
+
+    //       <View>
+    //         <Image
+    //           source={{
+    //             uri: item.url,
+    //           }}
+    //           style={styles.image}
+    //         />
+    //         <View style={styles.ItemDetails}>
+    //           <Text style={styles.headingText}> {item.itemName} </Text>
+    //           {addtoCart
+    //             ? this.displayCalories(item.calories)
+    //             : this.displayPrice(item.price)}
+    //           <View style={styles.quantitystyles}>
+    //             <Text sty={styles.description}> Select Quantity </Text>
+    //             <View style={styles.pickerStyle}>
+    //               <Picker
+    //                 mode="dropdown"
+    //                 style={{width: undefined}}
+    //                 selectedValue={this.state.selectedQuantity}
+    //                 onValueChange={value =>
+    //                   this.setState({selectedQuantity: value})
+    //                 }>
+    //                 <Picker.Item label="1" value="1" />
+    //                 <Picker.Item label="2" value="2" />
+    //                 <Picker.Item label="3" value="3" />
+    //               </Picker>
+    //             </View>
+    //           </View>
+    //         </View>
+    //         {!addtoCart && (
+    //           <View style={styles.descriptionContainer}>
+    //             <Text style={styles.descriptionTextTitle}>Description</Text>
+    //             <Text style={styles.description}>{item.information}</Text>
+    //           </View>
+    //         )}
+    //         {addtoCart && (
+    //           <Button
+    //             title="Press me"
+    //             color={'tomato'}
+    //             onPress={() => {
+    //               let quantityInInteger = parseInt(this.state.selectedQuantity);
+    //               addItemtoCart(quantityInInteger);
+    //             }}
+    //           />
+    //         )}
+    //       </View>
+    //     </Container>
+    //   </View>
+    // );
   }
 }
 export default Information;
 
 const styles = StyleSheet.create({
-  container: {
+  imageConatier: {
     height: '40%',
-    width: '45%',
-    marginBottom: '2%',
-    marginLeft: '2%',
-  },
-  calorieTextStyle: {
-    fontSize: 18,
-    textTransform: 'uppercase',
-  },
-  image: {
     width: '100%',
-    height: '60%',
+    backgroundColor: 'lightblue',
   },
-  ItemDetails: {
+  itemsDetails: {
+    height: '53%',
+    width: '100%',
+    // backgroundColor: 'lightpink',
+  },
+  imageStyling: {
+    width: '100%',
+    height: '100%',
+  },
+  itemPriceDetail: {
+    paddingHorizontal: 12,
+    //paddingVertical: 16,
+    fontSize: 12,
+    borderWidth: 1,
+    borderColor: '#E9EEF7',
+  },
+  itemName: {
+    fontSize: 16,
+    color: '#747883',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowRadius: 1,
+  },
+  itemPrice: {
+    fontSize: 16,
+    color: 'tomato',
+  },
+  descriptionContainer: {
+    backgroundColor: '#fff9f8',
     flex: 1,
-    marginLeft: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 12,
   },
-  headingText: {
-    fontSize: 24,
-    textTransform: 'uppercase',
+  itemsDescription: {
+    fontSize: 14,
+    color: '#747883',
   },
-  divider: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
+  footerButtons: {
+    height: '7%',
   },
-  descriptionTextTitle: {
-    fontSize: 20,
-    textTransform: 'uppercase',
-    textDecorationLine: 'underline',
-  },
-  description: {
-    marginTop: 20,
-    marginLeft: 15,
-  },
-  quantitystyles: {
-    display: 'flex',
+  // button
+  buttonConatiner: {
+    flex: 1,
     flexDirection: 'row',
+  },
+  transparentBUtton: {
+    backgroundColor: '#E2E6E9',
+    width: '45%',
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'space-between',
+  },
+  coloredButton: {
+    backgroundColor: 'tomato',
+    width: '65%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    fontSize: 16,
+    color: '#000',
   },
   pickerStyle: {
     width: '20%',
@@ -159,22 +261,73 @@ const styles = StyleSheet.create({
     marginRight: 5,
     borderColor: 'tomato',
   },
-  buyButtonContainer: {
-    marginTop: 10,
-  },
-  buyButtonStyle: {
-    backgroundColor: 'tomato',
-    width: '80%',
-    height: '25%',
-  },
-  buttonTexts: {
-    justifyContent: 'center',
-    textAlign: 'center',
-    color: 'white',
-    marginLeft: 10,
-  },
-  descriptionContainer: {
-    flexGrow: 1,
-    marginLeft: 10,
-  },
 });
+
+// const styles = StyleSheet.create({
+//   container: {
+//     height: '40%',
+//     width: '45%',
+//     marginBottom: '2%',
+//     marginLeft: '2%',
+//   },
+//   calorieTextStyle: {
+//     fontSize: 18,
+//     textTransform: 'uppercase',
+//   },
+//   image: {
+//     width: '100%',
+//     height: '60%',
+//   },
+//   ItemDetails: {
+//     flex: 1,
+//     marginLeft: 10,
+//   },
+//   headingText: {
+//     fontSize: 24,
+//     textTransform: 'uppercase',
+//   },
+//   divider: {
+//     borderBottomWidth: 1,
+//     borderBottomColor: '#e0e0e0',
+//   },
+//   descriptionTextTitle: {
+//     fontSize: 20,
+//     textTransform: 'uppercase',
+//     textDecorationLine: 'underline',
+//   },
+//   description: {
+//     marginTop: 20,
+//     marginLeft: 15,
+//   },
+//   quantitystyles: {
+//     display: 'flex',
+//     flexDirection: 'row',
+//     alignItems: 'center',
+//     justifyContent: 'space-between',
+//   },
+//   pickerStyle: {
+//     width: '20%',
+//     borderWidth: 1,
+//     borderRadius: 16,
+//     marginRight: 5,
+//     borderColor: 'tomato',
+//   },
+//   buyButtonContainer: {
+//     marginTop: 10,
+//   },
+//   buyButtonStyle: {
+//     backgroundColor: 'tomato',
+//     width: '80%',
+//     height: '25%',
+//   },
+//   buttonTexts: {
+//     justifyContent: 'center',
+//     textAlign: 'center',
+//     color: 'white',
+//     marginLeft: 10,
+//   },
+//   descriptionContainer: {
+//     flexGrow: 1,
+//     marginLeft: 10,
+//   },
+// });

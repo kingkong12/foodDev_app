@@ -17,7 +17,7 @@ import {
   Right,
   Picker,
 } from 'native-base';
-
+import {Chip} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class Information extends React.Component {
@@ -34,6 +34,19 @@ class Information extends React.Component {
   displayPrice = price => (
     <Text style={styles.calorieTextStyle}>price: £{price}</Text>
   );
+
+  renderChip = itemList => {
+    return (
+      <>
+        {itemList.map((item, index) => (
+          <Chip key={index} mode="outlined" style={styles.chipStyle}>
+            {item}
+          </Chip>
+        ))}
+      </>
+    );
+  };
+
   render() {
     const {
       addtoCart = false,
@@ -41,6 +54,14 @@ class Information extends React.Component {
       item,
     } = this.props.navigation.state.params;
 
+    const extraItemsList = [
+      'cheese',
+      'Dip',
+      'salt',
+      'pepper',
+      'tomatos',
+      'ketchup',
+    ];
     return (
       <View style={{flex: 1}}>
         <View style={styles.imageConatier}>
@@ -92,6 +113,17 @@ class Information extends React.Component {
             <Text style={styles.itemName}>DESCRIPTION </Text>
             <View style={{marginTop: 8}}>
               <Text style={styles.itemsDescription}>{item.information}</Text>
+            </View>
+            <Text style={styles.itemName}>NUTRIENTS </Text>
+            <View
+              style={{
+                marginTop: 8,
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'flex-start',
+                flexWrap: 'wrap',
+              }}>
+              {this.renderChip(item.nutrients)}
             </View>
           </View>
         </View>
@@ -162,6 +194,7 @@ const styles = StyleSheet.create({
   itemsDescription: {
     fontSize: 14,
     color: '#747883',
+    marginBottom: 8,
   },
   footerButtons: {
     height: '7%',
@@ -194,5 +227,8 @@ const styles = StyleSheet.create({
     marginRight: 5,
     borderColor: 'tomato',
   },
+  chipStyle: {
+    marginRight: 8,
+    marginBottom: 8,
+  },
 });
-

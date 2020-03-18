@@ -8,6 +8,20 @@ const helathyItems = [
     information:
       'An average-sized egg contains about 6–7 grams of protein. To enable your body to use as much of that as possible, it is recommended to eat eggs cooked rather than raw',
     calories: '17',
+    nutrients: [
+      'Fat 11 g',
+      'Cholesterol 373 mg',
+      'Protein 13 g',
+      'Sodium 124 mg',
+      'Potassium 126 mg',
+      'Fat 11 g',
+      'Total Carbohydrate 1.1 g',
+      'Cholesterol 373 mg',
+      'Protein 13 g',
+      'Sodium 124 mg',
+      'Potassium 126 mg',
+      'Total Carbohydrate 1.1 g',
+    ],
   },
 
   {
@@ -19,6 +33,15 @@ const helathyItems = [
     information:
       'This Healthy Whole Wheat Banana Bread is loaded with wonderful flavors! So rich and moist – no one will ever even guess that it’s healthy! Great for breakfasts or snacks and absolutely delicious toasted',
     calories: '17',
+    nutrients: [
+      'Total Carbohydrate 55 g',
+      'Cholesterol 373 mg',
+      'Sodium 124 mg',
+      'Fat 11 g',
+      'Potassium 126 mg',
+      'Dietary fiber 1.1 g',
+      'Potassium 134 mg',
+    ],
   },
 
   {
@@ -30,6 +53,14 @@ const helathyItems = [
     information:
       'This Healthy Whole Wheat Banana Bread is loaded with wonderful flavors! So rich and moist – no one will ever even guess that it’s healthy! Great for breakfasts or snacks and absolutely delicious toasted',
     calories: '237',
+    nutrients: [
+      'Fat 11 g',
+      'Cholesterol 373 mg',
+      'Sodium 124 mg',
+      'Potassium 126 mg',
+      'Total Carbohydrate 1.1 g',
+      'Protein 13 g',
+    ],
   },
 
   {
@@ -40,6 +71,14 @@ const helathyItems = [
     information:
       'Avocado makes the pesto sauce in this healthy zoodle recipe extra creamy. Topped with zesty shrimp this easy dinner recipe comes together in a flash.',
     calories: '237',
+    nutrients: [
+      'Fat 11 g',
+      'Cholesterol 373 mg',
+      'Sodium 124 mg',
+      'Potassium 126 mg',
+      'Total Carbohydrate 1.1 g',
+      'Protein 13 g',
+    ],
   },
 
   {
@@ -51,6 +90,14 @@ const helathyItems = [
     information:
       'A simple, soft and chewy granola bars recipe that’s delicious as-is or can be adapted based on your favorite dried fruits, nuts or chocolate',
     calories: '560',
+    nutrients: [
+      'Fat 11 g',
+      'Cholesterol 373 mg',
+      'Sodium 124 mg',
+      'Potassium 126 mg',
+      'Total Carbohydrate 1.1 g',
+      'Protein 13 g',
+    ],
   },
   {
     id: 5,
@@ -61,6 +108,14 @@ const helathyItems = [
     information:
       'Mashed avocado spread over crusty whole-wheat bread, finished with olive oil, red pepper flakes, and flaky sea salt—does it get much better than that?  It’s full of healthy, unsaturated fats, packed with fiber, and it’s an effortless breakfast or snack.',
     calories: '960',
+    nutrients: [
+      'Fat 11 g',
+      'Cholesterol 373 mg',
+      'Sodium 124 mg',
+      'Potassium 126 mg',
+      'Total Carbohydrate 1.1 g',
+      'Protein 13 g',
+    ],
   },
   {
     id: 6,
@@ -71,6 +126,14 @@ const helathyItems = [
       'A mix of cool, crunchy vegetables gives this healthy salad satisfying bite for a perfect potluck side.',
     price: 8.99,
     calories: '680',
+    nutrients: [
+      'Fat 11 g',
+      'Cholesterol 373 mg',
+      'Sodium 124 mg',
+      'Potassium 126 mg',
+      'Total Carbohydrate 1.1 g',
+      'Protein 13 g',
+    ],
   },
   {
     id: 7,
@@ -81,6 +144,14 @@ const helathyItems = [
     calories: '360',
     information:
       'The Ultimate Veggie Wrap has herbed cream cheese, Havarti, and lots of fresh vegetables! Best of all, make it ahead for an easy lunch optin',
+    nutrients: [
+      'Fat 11 g',
+      'Cholesterol 373 mg',
+      'Sodium 124 mg',
+      'Potassium 126 mg',
+      'Total Carbohydrate 1.1 g',
+      'Protein 13 g',
+    ],
   },
   {
     id: 8,
@@ -90,6 +161,14 @@ const helathyItems = [
       'Classic Chicken Salad is the PERFECT combo of seasoned chicken breast, creamy mayonnaise, lemon juice and crunchy celery, ready in just minutes!',
     price: 8.99,
     calories: '990',
+    nutrients: [
+      'Fat 11 g',
+      'Cholesterol 373 mg',
+      'Sodium 124 mg',
+      'Potassium 126 mg',
+      'Total Carbohydrate 1.1 g',
+      'Protein 13 g',
+    ],
   },
   {
     id: 9,
@@ -100,6 +179,14 @@ const helathyItems = [
       'Orange juice is a liquid extract of the orange tree fruit, produced by squeezing or reaming oranges. It comes in several different varieties, including blood orange, navel oranges, valencia orange, clementine, and tangerine',
     price: 8.99,
     calories: '320',
+    nutrients: [
+      'Fat 11 g',
+      'Cholesterol 373 mg',
+      'Sodium 124 mg',
+      'Potassium 126 mg',
+      'Total Carbohydrate 1.1 g',
+      'Protein 13 g',
+    ],
   },
 ];
 

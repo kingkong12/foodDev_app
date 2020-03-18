@@ -39,8 +39,6 @@ const TabNavigator = createBottomTabNavigator(
 
 const RootStack = createStackNavigator(
   {
-    // Root stack holds all the modla in our app
-    // Tabnavigator in nested inside so that modal screens have access to moda screens
     Main: TabNavigator,
     MyModal: Information,
     ViewOrder: ViewOrder,
@@ -52,5 +50,4 @@ const RootStack = createStackNavigator(
 );
 
 export default createAppContainer(RootStack);
-// Project by  vasanimithil999@gmail.com
-// - Mithil Vasani
+

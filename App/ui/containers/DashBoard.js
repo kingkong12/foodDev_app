@@ -1,12 +1,18 @@
 import React from 'react';
-import {View, StyleSheet, Text, Image, FlatList, Button} from 'react-native';
+import {View, StyleSheet, FlatList} from 'react-native';
 import Card from '../molecules/Card';
 import {addtoCartAction} from '../../Actions/dashbaord.action';
 import {connect} from 'react-redux';
 import SearchBar from 'react-native-search-bar';
 
 class DashBoard extends React.Component {
-  // a callback fucntion that will add itms into cart
+  constructor() {
+    super();
+    this.state = {
+      search: '',
+    };
+  }
+
   addItemtoCart = (item, quantity) => {
     let {cartItemsList} = this.props.itemReducer;
 
@@ -16,27 +22,33 @@ class DashBoard extends React.Component {
     if (foundInCart) {
       alert('ITEM ALREADY ADDED TO CART');
     } else {
-      this.props.addtoCartAction({...item, quantity}); //  note:  function is beign importd from  Actions folder
+      this.props.addtoCartAction({...item, quantity});
     }
   };
 
   render() {
     const {list} = this.props.itemReducer;
+    const searchedList =
+      list.filter(
+        data =>
+          data.itemName
+            .toLowerCase()
+            .indexOf(this.state.search.toLowerCase()) !== -1,
+      ) || list;
 
     return (
       <View style={styles.container}>
         <View style={styles.searchBar}>
           <SearchBar
-            // ref="searchBar"
             placeholder="Search"
-            onChangeText={() => {}}
+            onChangeText={value => this.setState({search: value})}
             onSearchButtonPress={() => {}}
-            onCancelButtonPress={() => {}}
+            onCancelButtonPress={() => this.setState({search: ''})}
           />
         </View>
 
         <FlatList
-          data={list} // here ypu will passs array data eg: [ 'Granular Bar' , 'Avacado Toast' , 'Salad' , 'Wrap' ]
+          data={searchedList} // here ypu will passs array data eg: [ 'Granular Bar' , 'Avacado Toast' , 'Salad' , 'Wrap' ]
           renderItem={(
             {item}, // now we are looping through above data and generating multiple cards
           ) => (

@@ -9,6 +9,7 @@ import Cart from './ui/containers/Cart';
 import Information from './ui/organism/Information';
 import ViewOrder from './ui/organism/ViewOrder.js';
 import AdminBoard from './ui/containers/AdminBoard';
+import AddINewtem from './ui/organism/addItem';
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -46,6 +47,7 @@ const RootStack = createStackNavigator(
     Main: TabNavigator,
     MyModal: Information,
     ViewOrder: ViewOrder,
+    addItem: AddINewtem,
   },
   {
     mode: 'modal',

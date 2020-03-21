@@ -112,9 +112,6 @@ const styles = StyleSheet.create({
   },
 });
 
-//  this is redux, mapstate to props is a fucntion which will connect to cart.reducer.js ( APP/Reducer/index.js)
-//  from that reduceser w  get list of menu items to display eg:  wrapa , granualr bar , etc.
-
 const mapStateToProps = state => {
   return {
     itemReducer: state.itemReducer,

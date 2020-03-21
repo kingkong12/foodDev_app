@@ -8,22 +8,26 @@ import DashBoard from './ui/containers/DashBoard';
 import Cart from './ui/containers/Cart';
 import Information from './ui/organism/Information';
 import ViewOrder from './ui/organism/ViewOrder.js';
+import AdminBoard from './ui/containers/AdminBoard';
 
 const TabNavigator = createBottomTabNavigator(
   {
     //these are 2 important screen in our app.
     MENU: DashBoard,
     CART: Cart,
+    ADMIN: AdminBoard,
   },
   {
     initialRouteName: 'MENU',
-    order: ['MENU', 'CART'],
+    order: ['MENU', 'CART', 'ADMIN'],
     defaultNavigationOptions: ({navigation}) => ({
       tabBarIcon: ({focused, tintColor}) => {
         const {routeName} = navigation.state;
         let iconName;
         if (routeName === 'MENU') {
           iconName = 'restaurant-menu';
+        } else if (routeName === 'ADMIN') {
+          iconName = 'lock';
         } else {
           iconName = 'shopping-cart';
         }
@@ -50,4 +54,3 @@ const RootStack = createStackNavigator(
 );
 
 export default createAppContainer(RootStack);
-

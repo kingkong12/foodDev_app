@@ -7,9 +7,11 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "json:server": "json-server --watch db.json"
   },
   "dependencies": {
+    "json-server": "^0.16.1",
     "native-base": "^2.13.8",
     "react": "16.9.0",
     "react-native": "0.61.4",

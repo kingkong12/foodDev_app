@@ -4,12 +4,14 @@ import Card from '../molecules/Card';
 import {addtoCartAction} from '../../Actions/dashbaord.action';
 import {connect} from 'react-redux';
 import SearchBar from 'react-native-search-bar';
+import {FAB, Portal, Provider} from 'react-native-paper';
 
 class DashBoard extends React.Component {
   constructor() {
     super();
     this.state = {
       search: '',
+      openFab: false,
     };
   }
 
@@ -74,12 +76,19 @@ class DashBoard extends React.Component {
           keyExtractor={(item, index) => `${index}`}
           numColumns={2} //  this will dispaly 2 coulmns in UI
         />
+        {/* {this.props.adminLogin.isLoggedIn && ( */}
+        <FAB
+          style={styles.fab}
+          color={'white'}
+          icon="plus"
+          onPress={() => this.props.navigation.navigate('addItem')}
+        />
+        {/* )} */}
       </View>
     );
   }
 }
-//  this is the css for mobile devises
-// NOTE , the laws of cs sis exactly same as HTML css except here sytax is different
+
 const styles = StyleSheet.create({
   searchBar: {
     minHeight: '8%',
@@ -110,14 +119,19 @@ const styles = StyleSheet.create({
   description: {
     alignSelf: 'center',
   },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'tomato',
+  },
 });
-
-//  this is redux, mapstate to props is a fucntion which will connect to cart.reducer.js ( APP/Reducer/index.js)
-//  from that reduceser w  get list of menu items to display eg:  wrapa , granualr bar , etc.
 
 const mapStateToProps = state => {
   return {
     itemReducer: state.itemReducer,
+    adminLogin: state.adminLogin,
   };
 };
 

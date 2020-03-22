@@ -4,7 +4,7 @@ import Card from '../molecules/Card';
 import {addtoCartAction} from '../../Actions/dashbaord.action';
 import {connect} from 'react-redux';
 import SearchBar from 'react-native-search-bar';
-import {FAB, Portal, Provider} from 'react-native-paper';
+import {FAB} from 'react-native-paper';
 
 class DashBoard extends React.Component {
   constructor() {
@@ -76,14 +76,14 @@ class DashBoard extends React.Component {
           keyExtractor={(item, index) => `${index}`}
           numColumns={2} //  this will dispaly 2 coulmns in UI
         />
-        {/* {this.props.adminLogin.isLoggedIn && ( */}
-        <FAB
-          style={styles.fab}
-          color={'white'}
-          icon="plus"
-          onPress={() => this.props.navigation.navigate('addItem')}
-        />
-        {/* )} */}
+        {this.props.adminLogin.isLoggedIn && (
+          <FAB
+            style={styles.fab}
+            color={'white'}
+            icon="plus"
+            onPress={() => this.props.navigation.navigate('addItem')}
+          />
+        )}
       </View>
     );
   }

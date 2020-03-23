@@ -1,48 +1,39 @@
-import React from 'react';
-import {createAppContainer} from 'react-navigation';
-import {createBottomTabNavigator} from 'react-navigation-tabs';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import {createStackNavigator} from 'react-navigation-stack';
-
-import DashBoard from './ui/containers/DashBoard';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
+import {createAppContainer} from 'react-navigation';
+import React from 'react';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import Cart from './ui/containers/Cart';
-import Information from './ui/organism/Information';
-import ViewOrder from './ui/organism/ViewOrder.js';
-import AdminBoard from './ui/containers/AdminBoard';
 import AddINewtem from './ui/organism/addItem';
+import DashBoard from './ui/containers/DashBoard';
+import ViewOrder from './ui/organism/ViewOrder.js';
+import Information from './ui/organism/Information';
 
 const Navigation = createBottomTabNavigator(
   {
-    //these are 2 important screen in our app.
-    MENU: DashBoard,
-    CART: Cart,
-    ADMIN: AdminBoard,
+    MEDICINES: DashBoard,
+    BASKET: Cart,
   },
   {
-    initialRouteName: 'MENU',
-    order: ['MENU', 'CART', 'ADMIN'],
+    order: ['MEDICINES', 'BASKET'],
+    initialRouteName: 'MEDICINES',
     defaultNavigationOptions: ({navigation}) => ({
-      tabBarIcon: ({focused, tintColor}) => {
+      tabBarIcon: ({tintColor}) => {
         const {routeName} = navigation.state;
-        let iconName;
-        if (routeName === 'MENU') {
-          iconName = 'restaurant-menu';
-        } else if (routeName === 'ADMIN') {
-          iconName = 'lock';
-        } else {
-          iconName = 'shopping-cart';
-        }
-        return <Icon name={iconName} size={25} color={tintColor} />;
+        let iconImage;
+        iconImage =
+          routeName === 'MEDICINES' ? 'restaurant-menu' : 'shopping-cart';
+        return <Icon size={35} color={tintColor} name={iconImage} />;
       },
     }),
     tabBarOptions: {
-      activeTintColor: 'tomato',
+      activeTintColor: '#0681C7',
       inactiveTintColor: 'gray',
     },
   },
 );
 
-const RootStack = createStackNavigator(
+const nestedStack = createStackNavigator(
   {
     Main: Navigation,
     MyModal: Information,
@@ -55,4 +46,4 @@ const RootStack = createStackNavigator(
   },
 );
 
-export default createAppContainer(RootStack);
+export default createAppContainer(nestedStack);

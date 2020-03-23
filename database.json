@@ -1,0 +1,36 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "itemName": "json-server",
+      "url": "https://twohealthykitchens.com/wp-content/uploads/2019/02/Healthy-Whole-Wheat-Banana-Bread-Recipe-horiz.jpg",
+      "price": 8.3,
+      "information": "This Healthy Whole Wheat Banana Bread is loaded with wonderful flavors! So rich and moist – no one will ever even guess that it’s healthy! Great for breakfasts or snacks and absolutely delicious toasted",
+      "nutrients": [
+        "Total Carbohydrate 55 g",
+        "Cholesterol 373 mg",
+        "Sodium 124 mg",
+        "Fat 11 g",
+        "Potassium 126 mg",
+        "Dietary fiber 1.1 g",
+        "Potassium 134 mg"
+      ]
+    },
+    {
+      "itemName": "Oat Meal",
+      "url": "https://fitfoodiefinds.com/wp-content/uploads/2019/08/basic-oatmeal.jpg",
+      "price": 6.3,
+      "information": "This Healthy Whole Wheat Banana Bread is loaded with wonderful flavors! So rich and moist – no one will ever even guess that it’s healthy! Great for breakfasts or snacks and absolutely delicious toasted",
+      "nutrients": [
+        "Fat 11 g",
+        "Cholesterol 373 mg",
+        "Sodium 124 mg",
+        "Protein 13 g",
+        "Potassium 126 mg",
+        "Dietary fiber 1.1 g",
+        "Potassium 134 mg"
+      ],
+      "id": 2
+    }
+  ]
+}

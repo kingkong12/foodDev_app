@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "json:server": "json-server --watch db.json"
+    "server": "json-server --watch database.json"
   },
   "dependencies": {
     "json-server": "^0.16.1",

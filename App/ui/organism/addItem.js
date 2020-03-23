@@ -24,6 +24,8 @@ class AddINewtem extends React.Component {
       description === ''
     ) {
       //alert('cannot be empty');
+    } else {
+      // const API = 'http://localhost:3000/items';
     }
   };
 

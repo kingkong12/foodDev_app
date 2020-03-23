@@ -11,7 +11,7 @@ import ViewOrder from './ui/organism/ViewOrder.js';
 import AdminBoard from './ui/containers/AdminBoard';
 import AddINewtem from './ui/organism/addItem';
 
-const TabNavigator = createBottomTabNavigator(
+const Navigation = createBottomTabNavigator(
   {
     //these are 2 important screen in our app.
     MENU: DashBoard,
@@ -44,7 +44,7 @@ const TabNavigator = createBottomTabNavigator(
 
 const RootStack = createStackNavigator(
   {
-    Main: TabNavigator,
+    Main: Navigation,
     MyModal: Information,
     ViewOrder: ViewOrder,
     addItem: AddINewtem,

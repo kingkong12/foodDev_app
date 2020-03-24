@@ -1,13 +1,12 @@
 import {createStackNavigator} from 'react-navigation-stack';
-import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createAppContainer} from 'react-navigation';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Information from './ui/organism/Information';
 import Cart from './ui/containers/Cart';
-import AddINewtem from './ui/organism/addItem';
 import DashBoard from './ui/containers/DashBoard';
 import ViewOrder from './ui/organism/ViewOrder.js';
-import Information from './ui/organism/Information';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Navigation = createBottomTabNavigator(
   {
@@ -22,7 +21,7 @@ const Navigation = createBottomTabNavigator(
         const {routeName} = navigation.state;
         let iconImage;
         iconImage =
-          routeName === 'MEDICINES' ? 'restaurant-menu' : 'shopping-cart';
+          routeName === 'MEDICINES' ? 'local-pharmacy' : 'shopping-basket';
         return <Icon size={35} color={tintColor} name={iconImage} />;
       },
     }),
@@ -38,7 +37,6 @@ const nestedStack = createStackNavigator(
     Main: Navigation,
     MyModal: Information,
     ViewOrder: ViewOrder,
-    addItem: AddINewtem,
   },
   {
     mode: 'modal',

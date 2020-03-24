@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     height: '35%',
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: 'tomato',
+    borderColor: '#0681C7',
   },
   imageContainer: {
     flex: 1,
@@ -53,12 +53,12 @@ const styles = StyleSheet.create({
   },
   deatils: {
     flex: 1,
-    color: 'tomato',
+    color: '#0681C7',
     paddingTop: 12,
     paddingLeft: 12,
   },
   itemNameText: {
-    color: 'tomato',
+    color: '#0681C7',
     flex: 1,
     fontSize: 18,
     fontWeight: 'bold',

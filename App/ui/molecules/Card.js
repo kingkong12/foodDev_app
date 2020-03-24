@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   priceText: {
-    color: 'tomato',
+    color: '#0681C7',
     marginVertical: 8,
     textAlign: 'center',
     fontSize: 14,
@@ -64,12 +64,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     flexGrow: 1,
     marginHorizontal: 3,
-    borderColor: 'tomato',
+    borderColor: '#0681C7',
     borderRadius: 8,
   },
   btnTextStyle: {
     textAlign: 'center',
-    color: 'tomato',
+    color: '#0681C7',
   },
 });
 

@@ -80,14 +80,14 @@ class Cart extends React.Component {
             </View>
             <View style={styles.buttonConatiner}>
               <Button
-                color="tomato"
+                color="#0681C7"
                 onPress={() =>
                   this.props.udpateCartQuantity(this.state.itemDetails)
                 }
                 title="Update"
               />
               <Button
-                color="tomato"
+                color="#0681C7"
                 onPress={() =>
                   this.props.deletefromCart(this.state.itemDetails)
                 }
@@ -145,7 +145,7 @@ class Cart extends React.Component {
             Total <Text style={styles.currency}> £ {total} </Text>
           </Text>
           <Button
-            color="tomato"
+            color="#0681C7"
             title="Checkout"
             disabled={buttonisDisabled}
             onPress={() => this.openViewOrderScreen(this.props)}
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     marginRight: '3%',
   },
   headerStyle: {
-    color: 'tomato',
+    color: '#0681C7',
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
     width: '90%',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: 'tomato',
+    borderColor: '#0681C7',
     alignItems: 'center',
   },
   pickerCotainer: {
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     marginRight: 5,
     textAlign: 'center',
-    borderColor: 'tomato',
+    borderColor: '#0681C7',
     alignContent: 'space-between',
   },
   description: {

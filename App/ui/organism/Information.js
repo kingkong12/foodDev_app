@@ -59,7 +59,7 @@ class Information extends React.Component {
       'Dip',
       'salt',
       'pepper',
-      'tomatos',
+      '#0681C7s',
       'ketchup',
     ];
     return (
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   },
   itemPrice: {
     fontSize: 16,
-    color: 'tomato',
+    color: '#0681C7',
   },
   descriptionContainer: {
     backgroundColor: '#fff9f8',
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   coloredButton: {
-    backgroundColor: 'tomato',
+    backgroundColor: '#0681C7',
     width: '65%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 16,
     marginRight: 5,
-    borderColor: 'tomato',
+    borderColor: '#0681C7',
   },
   chipStyle: {
     marginRight: 8,

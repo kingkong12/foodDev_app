@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     margin: 16,
     right: 0,
     bottom: 0,
-    backgroundColor: 'tomato',
+    backgroundColor: '#0681C7',
   },
 });
 

@@ -3,7 +3,6 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Button,
   Image,
   StyleSheet,
 } from 'react-native';
@@ -49,7 +48,6 @@ class Information extends React.Component {
 
   render() {
     const {
-      addtoCart = false,
       addItemtoCart,
       item,
     } = this.props.navigation.state.params;
@@ -135,7 +133,6 @@ class Information extends React.Component {
               onPress={() => this.props.navigation.goBack()}>
               <Text style={styles.buttonText}>Cancel</Text>
             </TouchableOpacity>
-            {addtoCart && (
               <TouchableOpacity
                 style={styles.coloredButton}
                 onPress={() => {
@@ -144,7 +141,6 @@ class Information extends React.Component {
                 }}>
                 <Text style={styles.buttonText}>Add to Cart</Text>
               </TouchableOpacity>
-            )}
           </View>
         </View>
       </View>

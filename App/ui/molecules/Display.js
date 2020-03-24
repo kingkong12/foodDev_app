@@ -9,7 +9,7 @@ export const CustomButton = props => {
   );
 };
 
-const Card = ({item, buyItem, itemInfo, ...props}) => {
+const Display = ({item, buyItem, itemInfo, ...props}) => {
   return (
     <View style={styles.cardContainer}>
       <Image
@@ -73,4 +73,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Card;
+export default Display;

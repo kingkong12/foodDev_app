@@ -35,7 +35,7 @@ const Navigation = createBottomTabNavigator(
 const nestedStack = createStackNavigator(
   {
     Main: Navigation,
-    MyModal: Information,
+    medicineInformation: Information,
     ViewOrder: ViewOrder,
   },
   {

@@ -1,5 +1,5 @@
 import {View, FlatList} from 'react-native';
-import {addtoCartAction} from '../../Actions/dashbaord.action';
+import {addMedicine} from '../../Actions/dashbaord.action';
 import {dadshBoardstyles as styles} from './dashboard.styles';
 import Display from '../molecules/Display';
 import React from 'react';
@@ -7,16 +7,14 @@ import {connect} from 'react-redux';
 
 class Medicine extends React.Component {
   addMedicinetoCart = (item, quantity) => {
-    let {cartItemsList} = this.props.itemReducer;
-
+    let {cartItemsList} = this.props.medicine;
     let foundInCart = cartItemsList.find(
       cartItemId => cartItemId.id === item.id,
     );
     foundInCart
-      ? alert('It is been added previousle')
+      ? alert('Medicine has been added previousle')
       : this.props.addtoCartAction({...item, quantity});
   };
-
   render() {
     let colNo = 2;
     return (
@@ -36,7 +34,7 @@ class Medicine extends React.Component {
               }
             />
           )}
-          data={this.props.itemReducer.list}
+          data={this.props.medicine.list}
         />
       </View>
     );
@@ -45,17 +43,11 @@ class Medicine extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    itemReducer: state.itemReducer,
-    adminLogin: state.adminLogin,
+    medicine: state.itemReducer,
   };
 };
 
 export default connect(
   mapStateToProps,
-  {addtoCartAction},
+  {addMedicine},
 )(Medicine);
-
-// need to fix redux
-//   card compoennt
-// dashborad componentnanme
-

@@ -2,10 +2,10 @@ import {createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import React from 'react';
-import Information from './ui/organism/Information';
+import Information from './ui/containers/Information';
 import Cart from './ui/containers/Cart';
 import DashBoard from './ui/containers/DashBoard';
-import ViewOrder from './ui/organism/ViewOrder.js';
+import ViewOrder from './ui/containers/ViewOrder';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Navigation = createBottomTabNavigator(

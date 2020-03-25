@@ -4,7 +4,6 @@ import {
   View,
   TouchableOpacity,
   Image,
-  StyleSheet,
 } from 'react-native';
 import {
   Container,
@@ -18,7 +17,7 @@ import {
 } from 'native-base';
 
 import { Button as PaperButton } from 'react-native-paper';
-import {Chip} from 'react-native-paper';
+
 import {InformationStyles as styles} from '../../styles';
 
 class BuyInfo extends React.Component {
@@ -76,7 +75,7 @@ class BuyInfo extends React.Component {
             </View>
           </View>
           <View style={styles.descriptionContainer}>
-            <Text style={styles.itemName}>Details </Text>
+            <Text style={styles.itemNameCss}>Details </Text>
             <View style={{marginTop: 8}}>
               <Text style={styles.itemsDescription}>{item.information}</Text>
             </View>
@@ -84,8 +83,6 @@ class BuyInfo extends React.Component {
         </View>
 
         <View style={styles.btnftr}>
-     
-
           <View style={styles.btnCtr}>
             <PaperButton style={styles.trbtn}
               onPress={() => this.props.navigation.goBack()}
@@ -102,19 +99,7 @@ class BuyInfo extends React.Component {
                 }}
           >
           Add To Cart</PaperButton>
-            {/* <TouchableOpacity
-              style={styles.trbtn}
-              onPress={() => this.props.navigation.goBack()}>
-              <Text style={styles.buttonText}>Cancel</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.clr}
-                onPress={() => {
-                  let quantityInInteger = parseInt(this.state.selectedQuantity);
-                  addItemtoCart(quantityInInteger);
-                }}>
-                <Text style={styles.buttonText}>Add to Cart</Text>
-              </TouchableOpacity> */}
+
           </View>
         </View>
       </View>

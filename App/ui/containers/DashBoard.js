@@ -1,7 +1,7 @@
 import {View, FlatList} from 'react-native';
 import {addMedicine} from '../../Actions/dashbaord.action';
-import {dadshBoardstyles as styles} from './dashboard.styles';
-import Display from '../molecules/Display';
+import {dadshBoardstyles as styles} from '../../styles';
+import Display from './Display';
 import React from 'react';
 import {connect} from 'react-redux';
 
@@ -43,7 +43,7 @@ class Medicine extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    medicine: state.itemReducer,
+    medicine: state.mainReducer,
   };
 };
 

@@ -7,7 +7,6 @@ const CstBtn = props => {
          <TouchableOpacity style={styles.buttonStyle} {...props}>
 <Text style={styles.btnTextStyle}>{props.title} - £ {props.price}</Text>
     </TouchableOpacity>
-    
   );
 };
 

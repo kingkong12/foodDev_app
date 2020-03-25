@@ -6,7 +6,7 @@ const initialState = {
   total: 0,
 };
 
-const itemReducer = (state = initialState, action) => {
+const mainReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'addMedicineToCart':
       return {
@@ -14,13 +14,13 @@ const itemReducer = (state = initialState, action) => {
         cartItemsList: state.cartItemsList.concat(action.payload),
       };
 
-    case 'DELETE_ITEM_FROM_CART':
+    case 'deleteFromMedicineBasket':
       let newItem = state.cartItemsList.filter(
         item => action.payload.id !== item.id,
       );
       return {...state, cartItemsList: newItem};
 
-    case 'UPDATE_QUANTITY_FROM_CART':
+    case 'updateMedicineQuantity':
       let cartItemIndex = state.cartItemsList.findIndex(
         item => item.id === action.payload.id,
       );
@@ -40,4 +40,4 @@ const itemReducer = (state = initialState, action) => {
   }
 };
 
-export default itemReducer;
+export default mainReducer;

@@ -1,12 +1,12 @@
 import React from 'react';
 import {Text, StyleSheet, View, FlatList, Modal, Button} from 'react-native';
 import {Picker} from 'native-base';
-import CartCard from '../atoms/CartCard';
+import CartCard from './CartCard';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
-  deletefromCart,
-  udpateCartQuantity,
+  removeFromCart,
+  modifyMedicineQuantity,
 } from '../../Actions/dashbaord.action';
 import {bskyStyles as styles} from '../../styles';
 
@@ -21,8 +21,8 @@ class Cart extends React.Component {
     };
   componentDidUpdate(prevSt) {
     if (
-      this.props.itemReducer.cartItemsList !==
-      prevSt.itemReducer.cartItemsList
+      this.props.mainReducer.cartItemsList !==
+      prevSt.mainReducer.cartItemsList
     ) {
       this.setState({
         itemDetails: {},
@@ -78,7 +78,7 @@ class Cart extends React.Component {
             <View style={styles.buttonConatiner}>
               <Button
                 onPress={() =>
-                  this.props.udpateCartQuantity(this.state.itemDetails)
+                  this.props.modifyMedicineQuantity(this.state.itemDetails)
                 }
                 title="MOdify changes"
                 color="#0681C7"
@@ -86,7 +86,7 @@ class Cart extends React.Component {
               <Button
                 color="#0681C7"
                 onPress={() =>
-                  this.props.deletefromCart(this.state.itemDetails)
+                  this.props.removeFromCart(this.state.itemDetails)
                 }
                 title="Delete"
               />
@@ -98,7 +98,7 @@ class Cart extends React.Component {
   };
 
   render() {
-    const {cartItemsList} = this.props.itemReducer;
+    const {cartItemsList} = this.props.mainReducer;
     const total =
       Math.round(
         cartItemsList.reduce((accumulator, currentValue) => {
@@ -158,11 +158,11 @@ class Cart extends React.Component {
 // redux
 const mapStateToProps = state => {
   return {
-    itemReducer: state.itemReducer,
+    mainReducer: state.mainReducer,
   };
 };
 
 export default connect(
   mapStateToProps,
-  {deletefromCart, udpateCartQuantity},
+  {removeFromCart, modifyMedicineQuantity},
 )(Cart);

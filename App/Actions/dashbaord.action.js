@@ -1,19 +1,18 @@
-export const deletefromCart = item => {
-  return {
-    type: 'DELETE_ITEM_FROM_CART',
-    payload: item,
-  };
-};
-export const udpateCartQuantity = item => {
-  return {
-    type: 'UPDATE_QUANTITY_FROM_CART',
-    payload: {id: item.id, quantity: item.quantity},
-  };
-};
-
-export const addMedicine = item => {
+export const addMedicine = medicine => {
   return {
     type: 'addMedicineToCart',
-    payload: item,
+    payload: medicine,
+  };
+};
+export const removeFromCart = medicine => {
+  return {
+    type: 'deleteFromMedicineBasket',
+    payload: medicine,
+  };
+};
+export const modifyMedicineQuantity = medicine => {
+  return {
+    type: 'updateMedicineQuantity',
+    payload: {quantity: medicine.quantity, id: medicine.id},
   };
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View, Image} from 'react-native';
-import { cartCardStyles as styles } from './cartCard.styles';
+import { cartCardStyles as styles } from '../../styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const BucketCard = ({item, showModalFun, ...props}) => {
@@ -11,7 +11,7 @@ const BucketCard = ({item, showModalFun, ...props}) => {
         <View style={styles.moreDescription}>
           <Text style={styles.itemNameTitemNameTextext}>{item.itemName}</Text>
         </View>
-         <View style={{ flex: 1, }}>
+         <View style={{ flex: 1,}}>
         <Image
           onPress={() => {}}
           source={{uri: item.url}}

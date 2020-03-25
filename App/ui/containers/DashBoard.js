@@ -12,8 +12,8 @@ class Medicine extends React.Component {
       cartItemId => cartItemId.id === item.id,
     );
     foundInCart
-      ? alert('Medicine has been added previousle')
-      : this.props.addtoCartAction({...item, quantity});
+      ? alert('Medicine already added')
+      : this.props.addMedicine({...item, quantity});
   };
   render() {
     let colNo = 2;

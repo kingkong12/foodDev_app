@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Dimensions} from 'react-native';
-import {StyleSheet, Text, View} from 'react-native';
+import { Text, View} from 'react-native';
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
+import {viewOrderStyles as styles} from '../../styles';
 
 export default class ViewOrder extends Component {
   render() {
@@ -9,22 +10,24 @@ export default class ViewOrder extends Component {
       name: 'The Waterside Inn',
       address: 'Ferry Road, Maidenhead, Berkshire ',
     };
+
+    
     return (
       <View style={styles.container}>
         <View style={styles.headerStyle}>
-          <Text style={styles.headerTextStyle}> Order Details </Text>
+          <Text style={styles.headerTextStyle}>Details</Text>
         </View>
         <View style={styles.body}>
           <View style={styles.detailContainer}>
-            <Text style={styles.fieldHeader}>Restaurent Deatils</Text>
+            <Text style={styles.fieldHeader}>Restaurent Specifics</Text>
             <View style={{flexDirection: 'row'}}>
               <Text style={styles.label}>Name :</Text>
-              <Text> {mockData.name}</Text>
+              <Text>The UK restaurent</Text>
             </View>
             <View style={styles.restaurentAddressConatiner}>
               <Text style={styles.label}>Address :</Text>
               <View style={styles.addressField}>
-                <Text> {mockData.address}</Text>
+                <Text> Diamond Road, New shire, London</Text>
               </View>
             </View>
           </View>
@@ -32,28 +35,25 @@ export default class ViewOrder extends Component {
             <Text style={styles.fieldHeader}>Order Deatils</Text>
             <Text style={styles.label}>Order ID : </Text>
             <Text style={styles.label}>Delievery Day & Time:</Text>
-            <ProgressSteps borderStyle="1" activeStep={2}>
+            <ProgressSteps  activeStep={2}>
               <ProgressStep
-                previousBtnDisabled
                 nextBtnDisabled
+                      previousBtnDisabled
                 nextBtnText=""
                 previousBtnText=""
                 label="Place Order"
               />
               <ProgressStep
-                previousBtnDisabled
                 nextBtnDisabled
-                nextBtnText=""
-                previousBtnText=""
+                previousBtnDisabled
                 label="Preparing Order"
               />
               <ProgressStep
-                previousBtnDisabled
-                nextBtnDisabled
                 nextBtnText=""
+                  finishBtnText=""
                 previousBtnText=""
-                finishBtnText=""
-                label="Delievery"
+                nextBtnDisabled
+                label="Out Delievery"
               />
             </ProgressSteps>
           </View>
@@ -63,58 +63,3 @@ export default class ViewOrder extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF',
-  },
-  headerStyle: {
-    minHeight: '8%',
-    width: '100%',
-    borderBottomWidth: 1,
-    borderStyle: 'solid',
-    borderBottomColor: '#EFEFEF',
-    paddingTop: '4%',
-  },
-  headerTextStyle: {
-    justifyContent: 'center',
-    textAlign: 'center',
-    fontWeight: '200',
-    fontSize: 18,
-    color: '#777777',
-  },
-  body: {
-    margin: 15,
-  },
-  fieldHeader: {
-    color: '#777777',
-    fontWeight: 'bold',
-    paddingBottom: 8,
-    fontSize: 16,
-  },
-  detailContainer: {
-    fontSize: 16,
-    paddingBottom: 8,
-    borderBottomWidth: 1,
-    borderStyle: 'solid',
-    borderBottomColor: '#EFEFEF',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    //    borderWidth: 1,
-  },
-  label: {
-    color: '#777777',
-    paddingBottom: 8,
-    fontSize: 16,
-  },
-  restaurentAddressConatiner: {
-    flexDirection: 'row',
-  },
-  addressField: {
-    flexShrink: 1,
-  },
-  progressbarContainer: {
-    flex: 1,
-    paddingTop: 8,
-  },
-});

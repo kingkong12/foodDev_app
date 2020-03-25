@@ -1,17 +1,11 @@
 import React from 'react';
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
-
-export const CustomButton = props => {
-  return (
-    <TouchableOpacity style={styles.buttonStyle} {...props}>
-      <Text style={styles.btnTextStyle}>{props.title}</Text>
-    </TouchableOpacity>
-  );
-};
+import CstBtn from './cstBtn.js';
+import {Card} from 'react-native-paper';
 
 const Display = ({item, buyItem, itemInfo, ...props}) => {
   return (
-    <View style={styles.cardContainer}>
+    <Card style={styles.cardContainer}>
       <Image
         source={{
           uri: item.url,
@@ -20,14 +14,13 @@ const Display = ({item, buyItem, itemInfo, ...props}) => {
       />
       <View style={styles.description}>
         <Text style={styles.priceText}>
-          {item.itemName} - £ {item.price}
+          {item.itemName}
         </Text>
         <View style={styles.buttonContainer}>
-          {/* <CustomButton title="Info" onPress={itemInfo} /> */}
-          <CustomButton title="Buy" onPress={buyItem} />
+          <CstBtn price={item.price} title="Buy" onPress={buyItem} />
         </View>
       </View>
-    </View>
+    </Card>
   );
 };
 
@@ -59,17 +52,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
 
     width: '100%',
-  },
-  buttonStyle: {
-    borderWidth: 1,
-    flexGrow: 1,
-    marginHorizontal: 3,
-    borderColor: '#0681C7',
-    borderRadius: 8,
-  },
-  btnTextStyle: {
-    textAlign: 'center',
-    color: '#0681C7',
   },
 });
 

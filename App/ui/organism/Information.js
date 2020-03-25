@@ -12,39 +12,22 @@ import {
   Header,
   Button as NativeButton,
   Body,
-  Title,
+  Titlon,
   Right,
   Picker,
 } from 'native-base';
-import {Chip} from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
-class Information extends React.Component {
+import { Button as PaperButton } from 'react-native-paper';
+import {Chip} from 'react-native-paper';
+import {InformationStyles as styles} from '../../styles';
+
+class BuyInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedQuantity: '1',
     };
   }
-  displayCalories = calories => {
-    return <Text style={styles.calorieTextStyle}>Calories: {calories}</Text>;
-  };
-
-  displayPrice = price => (
-    <Text style={styles.calorieTextStyle}>price: £{price}</Text>
-  );
-
-  renderChip = itemList => {
-    return (
-      <>
-        {itemList.map((item, index) => (
-          <Chip key={index} mode="outlined" style={styles.chipStyle}>
-            {item}
-          </Chip>
-        ))}
-      </>
-    );
-  };
 
   render() {
     const {
@@ -52,27 +35,18 @@ class Information extends React.Component {
       item,
     } = this.props.navigation.state.params;
 
-    const extraItemsList = [
-      'cheese',
-      'Dip',
-      'salt',
-      'pepper',
-      '#0681C7s',
-      'ketchup',
-    ];
     return (
       <View style={{flex: 1}}>
-        <View style={styles.imageConatier}>
+        <View style={styles.cssImage}>
           <Image
             source={{
               uri: item.url,
             }}
-            style={styles.imageStyling}
+            style={styles.cssImageStyle}
           />
         </View>
-
-        <View style={styles.itemsDetails}>
-          <View style={styles.itemPriceDetail}>
+        <View style={styles.itemsHeders}>
+          <View style={styles.priceCss}>
             <View
               style={{
                 flexDirection: 'row',
@@ -80,19 +54,13 @@ class Information extends React.Component {
                 paddingTop: 16,
                 paddingBottom: 4,
               }}>
-              <Text style={styles.itemName}>{item.itemName.toUpperCase()}</Text>
-              <Text style={styles.itemPrice}> £ {item.price} </Text>
+              <Text style={styles.itemNameCss}>{item.itemName}</Text>
+              <Text style={styles.newPriceCss}> £ {item.price} </Text>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                paddingTop: 4,
-                paddingBottom: 16,
-              }}>
-              <Text style={styles.itemName}>{'Quantity'.toUpperCase()} </Text>
-
-              <View style={styles.pickerStyle}>
+              style={styles.styleContainer}>
+              <Text style={styles.itemNameCss}>UNITS</Text>
+              <View style={styles.dropDown}>
                 <Picker
                   mode="dropdown"
                   style={{width: 40}}
@@ -100,131 +68,57 @@ class Information extends React.Component {
                   onValueChange={value =>
                     this.setState({selectedQuantity: value})
                   }>
-                  <Picker.Item label="1" value="1" />
-                  <Picker.Item label="2" value="2" />
-                  <Picker.Item label="3" value="3" />
+                  <Picker.Item  value="1" label="1"/>
+                  <Picker.Item value="2" label="2" />
+                  <Picker.Item value="3" label="3" />
                 </Picker>
               </View>
             </View>
           </View>
           <View style={styles.descriptionContainer}>
-            <Text style={styles.itemName}>DESCRIPTION </Text>
+            <Text style={styles.itemName}>Details </Text>
             <View style={{marginTop: 8}}>
               <Text style={styles.itemsDescription}>{item.information}</Text>
-            </View>
-            <Text style={styles.itemName}>NUTRIENTS </Text>
-            <View
-              style={{
-                marginTop: 8,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'flex-start',
-                flexWrap: 'wrap',
-              }}>
-              {this.renderChip(item.nutrients)}
             </View>
           </View>
         </View>
 
-        <View style={styles.footerButtons}>
-          <View style={styles.buttonConatiner}>
-            <TouchableOpacity
-              style={styles.transparentBUtton}
+        <View style={styles.btnftr}>
+     
+
+          <View style={styles.btnCtr}>
+            <PaperButton style={styles.trbtn}
+              onPress={() => this.props.navigation.goBack()}
+              mode={'contained'}
+            >
+            Cancel
+            </PaperButton>
+          <PaperButton 
+          mode={'outlined'}
+          style={styles.clr}
+                onPress={() => {
+                  let quantityInInteger = parseInt(this.state.selectedQuantity);
+                  addItemtoCart(quantityInInteger);
+                }}
+          >
+          Add To Cart</PaperButton>
+            {/* <TouchableOpacity
+              style={styles.trbtn}
               onPress={() => this.props.navigation.goBack()}>
               <Text style={styles.buttonText}>Cancel</Text>
             </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.coloredButton}
+            <TouchableOpacity
+                style={styles.clr}
                 onPress={() => {
                   let quantityInInteger = parseInt(this.state.selectedQuantity);
                   addItemtoCart(quantityInInteger);
                 }}>
                 <Text style={styles.buttonText}>Add to Cart</Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
           </View>
         </View>
       </View>
     );
   }
 }
-export default Information;
-
-const styles = StyleSheet.create({
-  imageConatier: {
-    height: '40%',
-    width: '100%',
-    backgroundColor: 'lightblue',
-  },
-  itemsDetails: {
-    height: '53%',
-    width: '100%',
-    // backgroundColor: 'lightpink',
-  },
-  imageStyling: {
-    width: '100%',
-    height: '100%',
-  },
-  itemPriceDetail: {
-    paddingHorizontal: 12,
-    //paddingVertical: 16,
-    fontSize: 12,
-    borderWidth: 1,
-    borderColor: '#E9EEF7',
-  },
-  itemName: {
-    fontSize: 16,
-    color: '#747883',
-    textShadowColor: 'rgba(0, 0, 0, 0.3)',
-    textShadowRadius: 1,
-  },
-  itemPrice: {
-    fontSize: 16,
-    color: '#0681C7',
-  },
-  descriptionContainer: {
-    backgroundColor: '#fff9f8',
-    flex: 1,
-    paddingHorizontal: 12,
-    paddingVertical: 12,
-  },
-  itemsDescription: {
-    fontSize: 14,
-    color: '#747883',
-    marginBottom: 8,
-  },
-  footerButtons: {
-    height: '7%',
-  },
-  // button
-  buttonConatiner: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  transparentBUtton: {
-    backgroundColor: '#E2E6E9',
-    width: '45%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  coloredButton: {
-    backgroundColor: '#0681C7',
-    width: '65%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    fontSize: 16,
-    color: '#000',
-  },
-  pickerStyle: {
-    width: '20%',
-    borderWidth: 1,
-    borderRadius: 16,
-    marginRight: 5,
-    borderColor: '#0681C7',
-  },
-  chipStyle: {
-    marginRight: 8,
-    marginBottom: 8,
-  },
-});
+export default BuyInfo;

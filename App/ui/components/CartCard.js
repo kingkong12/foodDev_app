@@ -13,7 +13,7 @@ const BucketCard = ({item, showModalFun, ...props}) => {
         </View>
          <View style={{ flex: 1,}}>
         <Image
-          onPress={() => {}}
+          //onPress={() => {}}
           source={{uri: item.url}}
           style={styles.pic}
         />

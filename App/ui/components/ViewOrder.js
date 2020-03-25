@@ -6,12 +6,6 @@ import {viewOrderStyles as styles} from '../../styles';
 
 export default class ViewOrder extends Component {
   render() {
-    const mockData = {
-      name: 'The Waterside Inn',
-      address: 'Ferry Road, Maidenhead, Berkshire ',
-    };
-
-    
     return (
       <View style={styles.container}>
         <View style={styles.headerStyle}>
@@ -24,7 +18,7 @@ export default class ViewOrder extends Component {
               <Text style={styles.label}>Name :</Text>
               <Text>The UK restaurent</Text>
             </View>
-            <View style={styles.restaurentAddressConatiner}>
+            <View stylse={styles.restaurentAddressConatiner}>
               <Text style={styles.label}>Address :</Text>
               <View style={styles.addressField}>
                 <Text> Diamond Road, New shire, London</Text>
@@ -35,10 +29,10 @@ export default class ViewOrder extends Component {
             <Text style={styles.fieldHeader}>Order Deatils</Text>
             <Text style={styles.label}>Order ID : </Text>
             <Text style={styles.label}>Delievery Day & Time:</Text>
-            <ProgressSteps  activeStep={2}>
+            <ProgressSteps activeStep={2}>
               <ProgressStep
                 nextBtnDisabled
-                      previousBtnDisabled
+                previousBtnDisabled
                 nextBtnText=""
                 previousBtnText=""
                 label="Place Order"
@@ -50,7 +44,7 @@ export default class ViewOrder extends Component {
               />
               <ProgressStep
                 nextBtnText=""
-                  finishBtnText=""
+                finishBtnText=""
                 previousBtnText=""
                 nextBtnDisabled
                 label="Out Delievery"

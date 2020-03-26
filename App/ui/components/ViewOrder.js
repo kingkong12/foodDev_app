@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Dimensions} from 'react-native';
-import { Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 import {viewOrderStyles as styles} from '../../styles';
 
@@ -25,35 +25,8 @@ export default class ViewOrder extends Component {
               </View>
             </View>
           </View>
-          <View style={styles.progressbarContainer}>
-            <Text style={styles.fieldHeader}>Order Deatils</Text>
-            <Text style={styles.label}>Order ID : </Text>
-            <Text style={styles.label}>Delievery Day & Time:</Text>
-            <ProgressSteps activeStep={2}>
-              <ProgressStep
-                nextBtnDisabled
-                previousBtnDisabled
-                nextBtnText=""
-                previousBtnText=""
-                label="Place Order"
-              />
-              <ProgressStep
-                nextBtnDisabled
-                previousBtnDisabled
-                label="Preparing Order"
-              />
-              <ProgressStep
-                nextBtnText=""
-                finishBtnText=""
-                previousBtnText=""
-                nextBtnDisabled
-                label="Out Delievery"
-              />
-            </ProgressSteps>
-          </View>
         </View>
       </View>
     );
   }
 }
-

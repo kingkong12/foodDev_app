@@ -1,5 +1,5 @@
 import {View, FlatList} from 'react-native';
-import {addMedicine} from '../../Actions/dashbaord.action';
+import {addMedicine} from '../../actions/dashbaord.action';
 import {dadshBoardstyles as styles} from '../../styles';
 import Display from './Display';
 import React from 'react';
@@ -51,3 +51,4 @@ export default connect(
   mapStateToProps,
   {addMedicine},
 )(Medicine);
+

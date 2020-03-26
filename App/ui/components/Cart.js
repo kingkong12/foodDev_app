@@ -7,22 +7,21 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
   removeFromCart,
   modifyMedicineQuantity,
-} from '../../Actions/dashbaord.action';
+} from '../../actions/dashbaord.action';
 import {bskyStyles as styles} from '../../styles';
 
-import { Button as PaperButton } from 'react-native-paper';
+import {Button as PaperButton} from 'react-native-paper';
 
 class Cart extends React.Component {
-  state= {
-      modalOpen: false,
-      itemDetails: {},
-      itemId: null,
-      itemQuantity: null,
-    };
+  state = {
+    modalOpen: false,
+    itemDetails: {},
+    itemId: null,
+    itemQuantity: null,
+  };
   componentDidUpdate(prevSt) {
     if (
-      this.props.mainReducer.cartItemsList !==
-      prevSt.mainReducer.cartItemsList
+      this.props.mainReducer.cartItemsList !== prevSt.mainReducer.cartItemsList
     ) {
       this.setState({
         itemDetails: {},
@@ -33,7 +32,7 @@ class Cart extends React.Component {
   displayModal = () => {
     return (
       <Modal
-       animationType={'slide'}
+        animationType={'slide'}
         transparent={true}
         visible={this.state.modalOpen}>
         <View style={styles.modalConatinerStyle}>
@@ -67,8 +66,7 @@ class Cart extends React.Component {
                       },
                     });
                   }}
-                  selectedValue={`${this.state.itemDetails.quantity}`}
-                  >
+                  selectedValue={`${this.state.itemDetails.quantity}`}>
                   <Picker.Item label="1" value="1" />
                   <Picker.Item label="2" value="2" />
                   <Picker.Item label="3" value="3" />
@@ -109,7 +107,6 @@ class Cart extends React.Component {
     const buttonisDisabled = total > 0 ? false : true;
     const transparent = this.state.modalOpen ? {opacity: 0.5} : '';
 
-
     return (
       <View style={[styles.container, transparent]}>
         {this.displayModal()}
@@ -145,9 +142,8 @@ class Cart extends React.Component {
           <PaperButton
             color="#0681C7"
             disabled={buttonisDisabled}
-            onPress={() =>  this.props.navigation.navigate('ViewOrder')}
-          >
-          Checkout !
+            onPress={() => this.props.navigation.navigate('ViewOrder')}>
+            Checkout !
           </PaperButton>
         </View>
       </View>

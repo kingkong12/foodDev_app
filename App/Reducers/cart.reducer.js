@@ -1,9 +1,9 @@
-import helathyItems from './mockData/listofItems';
+import medicineItem from '../db';
 
 const initialState = {
-  list: helathyItems,
   cartItemsList: [],
   total: 0,
+  list: medicineItem,
 };
 
 const mainReducer = (state = initialState, action) => {

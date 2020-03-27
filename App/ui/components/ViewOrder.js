@@ -13,10 +13,10 @@ export default class ViewOrder extends Component {
         </View>
         <View style={styles.body}>
           <View style={styles.detailContainer}>
-            <Text style={styles.fieldHeader}>Restaurent Specifics</Text>
+            <Text style={styles.fieldHeader}>Medical Store Specifics</Text>
             <View style={{flexDirection: 'row'}}>
               <Text style={styles.label}>Name :</Text>
-              <Text>The UK restaurent</Text>
+              <Text>Boots Pharmacy</Text>
             </View>
             <View stylse={styles.restaurentAddressConatiner}>
               <Text style={styles.label}>Address :</Text>

@@ -1,6 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Button, Card, TextInput, Paragraph, Snackbar} from 'react-native-paper';
+import {
+  Button,
+  Card,
+  TextInput,
+  Paragraph,
+  Title,
+  Snackbar,
+} from 'react-native-paper';
 import {connect} from 'react-redux';
 // actions
 import {loggedIn, logOut} from '../../actions/userAuthenticate';
@@ -12,6 +19,10 @@ class AdminBoard extends React.Component {
       userName: '',
       password: '',
       snackBarVisiblity: false,
+      snackBar: {
+        visiblity: false,
+        snackBarmessage: '',
+      },
     };
   }
 
@@ -21,13 +32,45 @@ class AdminBoard extends React.Component {
       loginDetails.userName === this.state.userName &&
       loginDetails.password === this.state.password
     ) {
-      this.setState({userName: '', password: ''});
+      this.setState({userName: '', password: ''}, () => {
+        this.toggleSnackBar(true, ' You have successfully logged In !');
+      });
       this.props.loggedIn();
     } else {
-      this.setState({snackBarVisiblity: true});
+      this.toggleSnackBar(true, 'UserName or Password is Incorret !');
+      //this.setState({snackBarVisiblity: true});
     }
   };
 
+  toggleSnackBar = (status, messgae) => {
+    this.setState({
+      ...this.state,
+      snackBar: {
+        ...this.state.snackBar,
+        visiblity: status || false,
+        snackBarmessage: messgae || '',
+      },
+    });
+  };
+
+  logoutAdmin = () => {
+    this.toggleSnackBar(true, 'You have succefssfully Loged out');
+    this.props.logOut();
+  };
+
+  renderSnackBar = props => {
+    return (
+      <Snackbar
+        style={{
+          backgroundColor: '#DC143C',
+        }}
+        visible={this.state.snackBar.visiblity}
+        duration={900}
+        onDismiss={() => this.toggleSnackBar()}>
+        {this.state.snackBar.snackBarmessage}
+      </Snackbar>
+    );
+  };
   renderFields = () => (
     <Card>
       <Card.Title title="Admin Login" />
@@ -75,31 +118,28 @@ class AdminBoard extends React.Component {
     if (this.props.adminLogin.isLoggedIn === true) {
       return (
         <View style={styles.container}>
-          <Text> Welcome back Admin </Text>
-          <Text> You can now edit items in Menu section.</Text>
-          <Button
-            color={'tomato'}
-            labelStyle={{color: 'white'}}
-            //style={}
-            mode="contained"
-            onPress={() => this.props.logOut()}>
-            Log out
-          </Button>
+          <Card>
+            <Card.Content>
+              <Title> Welcome Admin </Title>
+              <Paragraph> You can now edit items in Menu section.</Paragraph>
+              <Button
+                color={'tomato'}
+                labelStyle={{color: 'white'}}
+                style={styles.logOutButtonStyle}
+                mode="contained"
+                onPress={() => this.logoutAdmin()}>
+                Log out
+              </Button>
+            </Card.Content>
+          </Card>
+          {this.renderSnackBar()}
         </View>
       );
     }
     return (
       <View style={styles.container}>
         {this.renderFields()}
-        <Snackbar
-          style={{
-            backgroundColor: '#DC143C',
-          }}
-          visible={this.state.snackBarVisiblity}
-          duration={700}
-          onDismiss={() => this.setState({snackBarVisiblity: false})}>
-          UserName or Password is Incorret !
-        </Snackbar>
+        {this.renderSnackBar()}
       </View>
     );
   }
@@ -117,6 +157,9 @@ const styles = StyleSheet.create({
   textFieldsAlignment: {
     marginTop: 12,
     marginBottom: 12,
+  },
+  logOutButtonStyle: {
+    marginTop: 16,
   },
 });
 

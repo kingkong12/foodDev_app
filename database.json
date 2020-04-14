@@ -17,6 +17,7 @@
       ]
     },
     {
+      "id": 2,
       "itemName": "Oat Meal",
       "url": "https://fitfoodiefinds.com/wp-content/uploads/2019/08/basic-oatmeal.jpg",
       "price": 6.3,
@@ -29,8 +30,7 @@
         "Potassium 126 mg",
         "Dietary fiber 1.1 g",
         "Potassium 134 mg"
-      ],
-      "id": 2
+      ]
     }
   ]
 }

@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
   deletefromCart,
   udpateCartQuantity,
-} from '../../Actions/dashbaord.action';
+} from '../../actions/dashbaord.action.js';
 
 class Cart extends React.Component {
   constructor(props) {

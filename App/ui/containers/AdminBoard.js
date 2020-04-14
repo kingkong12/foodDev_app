@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Button, Card, TextInput, Paragraph, Snackbar} from 'react-native-paper';
 import {connect} from 'react-redux';
 // actions
-import {loggedIn, logOut} from '../../Actions/userAuthenticate';
+import {loggedIn, logOut} from '../../actions/userAuthenticate';
 
 class AdminBoard extends React.Component {
   constructor() {

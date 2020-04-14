@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, FlatList} from 'react-native';
 import Card from '../molecules/Card';
-import {addtoCartAction} from '../../Actions/dashbaord.action';
+import {addtoCartAction} from '../../actions/dashbaord.action';
 import {connect} from 'react-redux';
 import SearchBar from 'react-native-search-bar';
 import {FAB} from 'react-native-paper';

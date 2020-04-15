@@ -12,7 +12,7 @@ export default class ViewOrder extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.headerStyle}>
-          <Text style={styles.headerTextStyle}> Order Details </Text>
+          <Text style={styles.headerTextStyle}> Summary Details </Text>
         </View>
         <View style={styles.body}>
           <View style={styles.detailContainer}>

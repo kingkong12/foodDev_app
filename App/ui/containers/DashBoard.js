@@ -98,7 +98,7 @@ class DashBoard extends React.Component {
             {item}, // now we are looping through above data and generating multiple cards
           ) => (
             <Card
-              adminLogin={adminLogin}
+              adminLogin={adminLogin.isLoggedIn}
               onDelete={id =>
                 this.setState({showConfirmDialog: true, deleteItemId: id})
               }

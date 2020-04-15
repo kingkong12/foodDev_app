@@ -9,7 +9,14 @@ export const CustomButton = props => {
   );
 };
 
-const Card = ({item, buyItem, onDelete, adminLogin, itemInfo, ...props}) => {
+const Card = ({
+  item,
+  buyItem,
+  onDelete,
+  adminLogin = false,
+  itemInfo,
+  ...props
+}) => {
   return (
     <View style={styles.cardContainer}>
       <Image

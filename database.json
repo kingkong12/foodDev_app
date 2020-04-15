@@ -1,22 +1,6 @@
 {
   "items": [
     {
-      "id": 1,
-      "itemName": "Banana Bread",
-      "url": "https://twohealthykitchens.com/wp-content/uploads/2019/02/Healthy-Whole-Wheat-Banana-Bread-Recipe-horiz.jpg",
-      "price": 8.3,
-      "information": "This Healthy Whole Wheat Banana Bread is loaded with wonderful flavors! So rich and moist – no one will ever even guess that it’s healthy! Great for breakfasts or snacks and absolutely delicious toasted",
-      "nutrients": [
-        "Total Carbohydrate 55 g",
-        "Cholesterol 373 mg",
-        "Sodium 124 mg",
-        "Fat 11 g",
-        "Potassium 126 mg",
-        "Dietary fiber 1.1 g",
-        "Potassium 134 mg"
-      ]
-    },
-    {
       "itemName": "Granular Bars",
       "url": "https://i2.wp.com/www.foodfaithfitness.com/wp-content/uploads/2018/08/sugar-free-keto-low-carb-granola-bars-photograph.jpg",
       "price": 4,
@@ -24,7 +8,6 @@
       "nutrients": [],
       "id": 2
     },
-
     {
       "id": 3,
       "itemName": "Avacado Toast",

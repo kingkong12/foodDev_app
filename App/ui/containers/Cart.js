@@ -110,7 +110,6 @@ class Cart extends React.Component {
         }, 0) * 100,
       ) / 100 || 0;
     const buttonisDisabled = total > 0 ? false : true;
-    console.log('total : ; : ; ', total, typeof total);
     const transparent = this.state.showModal ? {opacity: 0.5} : '';
     return (
       <View style={[styles.container, transparent]}>

@@ -1,13 +1,19 @@
 import helathyItems from './mockData/listofItems';
-
+// nee to remove this item.
 const initialState = {
-  list: helathyItems,
+  list: [],
   cartItemsList: [],
   total: 0,
+  spinner: false,
 };
 
 const itemReducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'LOAD_ITEM':
+      return {
+        ...state,
+        list: action.payload,
+      };
     case 'ADD_ITEM_TO_CART':
       return {
         ...state,
@@ -35,6 +41,11 @@ const itemReducer = (state = initialState, action) => {
       ];
 
       return {...state, cartItemsList: updatedCartItemsList};
+    case 'SHOW_ACTIVITY_INDICATOR':
+      return {...state, spinner: true};
+
+    case 'HIDE_ACTIVITY_INDICATOR':
+      return {...state, spinner: false};
     default:
       return state;
   }

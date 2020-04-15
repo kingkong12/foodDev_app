@@ -1,10 +1,18 @@
 import React from 'react';
 import {View, StyleSheet, FlatList} from 'react-native';
 import Card from '../molecules/Card';
-import {addtoCartAction} from '../../actions/dashbaord.action';
+import {
+  addtoCartAction,
+  addDashboardItem,
+  showActivityIndicator,
+  hideActivityIndicator,
+} from '../../actions/dashbaord.action';
 import {connect} from 'react-redux';
 import SearchBar from 'react-native-search-bar';
 import {FAB} from 'react-native-paper';
+import axios from 'axios';
+import Spinner from '../atoms/ActivityIndicator';
+import {basceApiUrl} from '../../api/baseUrl';
 
 class DashBoard extends React.Component {
   constructor() {
@@ -13,6 +21,24 @@ class DashBoard extends React.Component {
       search: '',
       openFab: false,
     };
+  }
+
+  componentDidMount() {
+    const {
+      addDashboardItem,
+      showActivityIndicator,
+      hideActivityIndicator,
+    } = this.props;
+    let itemUrl = `${basceApiUrl}/items`;
+    console.log('ur; ', itemUrl);
+    showActivityIndicator();
+    axios
+      .get(itemUrl)
+      .then(resp => addDashboardItem(resp.data))
+      .catch(error => {
+        console.log(error);
+      });
+    hideActivityIndicator();
   }
 
   addItemtoCart = (item, quantity) => {
@@ -29,7 +55,7 @@ class DashBoard extends React.Component {
   };
 
   render() {
-    const {list} = this.props.itemReducer;
+    const {list, spinner} = this.props.itemReducer;
     const searchedList =
       list.filter(
         data =>
@@ -37,7 +63,6 @@ class DashBoard extends React.Component {
             .toLowerCase()
             .indexOf(this.state.search.toLowerCase()) !== -1,
       ) || list;
-
     return (
       <View style={styles.container}>
         <View style={styles.searchBar}>
@@ -48,7 +73,7 @@ class DashBoard extends React.Component {
             onCancelButtonPress={() => this.setState({search: ''})}
           />
         </View>
-
+        <Spinner animate={spinner} />
         <FlatList
           data={searchedList} // here ypu will passs array data eg: [ 'Granular Bar' , 'Avacado Toast' , 'Salad' , 'Wrap' ]
           renderItem={(
@@ -137,5 +162,10 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {addtoCartAction},
+  {
+    addtoCartAction,
+    addDashboardItem,
+    showActivityIndicator,
+    hideActivityIndicator,
+  },
 )(DashBoard);

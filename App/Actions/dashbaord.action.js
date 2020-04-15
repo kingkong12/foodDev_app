@@ -17,3 +17,22 @@ export const udpateCartQuantity = item => {
     payload: {id: item.id, quantity: item.quantity},
   };
 };
+
+export const addDashboardItem = payload => {
+  return {
+    type: 'LOAD_ITEM',
+    payload: payload,
+  };
+};
+
+export const showActivityIndicator = payload => {
+  return {
+    type: 'SHOW_ACTIVITY_INDICATOR',
+  };
+};
+
+export const hideActivityIndicator = payload => {
+  return {
+    type: 'HIDE_ACTIVITY_INDICATOR',
+  };
+};

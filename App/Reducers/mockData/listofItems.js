@@ -191,17 +191,3 @@ const helathyItems = [
 ];
 
 export default helathyItems;
-
-/* format
-    {
-        id: ,
-        itemName:,
-        url:,
-        information::
-        price:,
-        calories:'',
-
-    },
-
-
-*/

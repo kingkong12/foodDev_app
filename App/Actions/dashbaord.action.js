@@ -45,7 +45,6 @@ export const updateDashboardItem = payload => {
 };
 
 export const deleteDashBoardItem = payload => {
-  console.log('action');
   return {
     type: 'DELETE_DASHBAORD_ITEM',
     payload: payload,

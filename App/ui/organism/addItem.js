@@ -11,12 +11,10 @@ class AddINewtem extends React.Component {
   constructor() {
     super();
     this.state = {
-      itemName: 'Granular Bars',
-      imageUrl:
-        'https://i2.wp.com/www.foodfaithfitness.com/wp-content/uploads/2018/08/sugar-free-keto-low-carb-granola-bars-photograph.jpg',
-      price: 4,
-      description:
-        'A simple, soft and chewy granola bars recipe that’s delicious as-is or can be adapted based on your favorite dried fruits, nuts or chocolate',
+      itemName: '',
+      imageUrl: '',
+      price: '',
+      description: '',
       ingredients: [],
       snackBar: {
         visiblity: false,

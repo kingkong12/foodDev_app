@@ -9,8 +9,13 @@ import {
   Snackbar,
 } from 'react-native-paper';
 import {connect} from 'react-redux';
-// actions
-import {loggedIn, logOut} from '../../actions/userAuthenticate';
+import {
+  loggedIn,
+  logOut,
+  setAdminCredentails,
+} from '../../actions/userAuthenticate';
+import {basceApiUrl} from '../../api/baseUrl';
+import axios from 'axios';
 
 class AdminBoard extends React.Component {
   constructor() {
@@ -26,8 +31,19 @@ class AdminBoard extends React.Component {
     };
   }
 
+  componentDidMount() {
+    let itemUrl = `${basceApiUrl}/Admin`;
+    axios
+      .get(itemUrl)
+      .then(resp => this.props.setAdminCredentails(resp.data))
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   formValidation = () => {
     let {loginDetails} = this.props.adminLogin;
+    console.log('loginDetails', loginDetails.userName);
     if (
       loginDetails.userName === this.state.userName &&
       loginDetails.password === this.state.password
@@ -171,12 +187,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {loggedIn, logOut},
+  {loggedIn, logOut, setAdminCredentails},
 )(AdminBoard);
-
-/*
-TO DO :
-wiring with redux
-form validations.
-  - form validation
-*/

@@ -123,14 +123,14 @@ class DashBoard extends React.Component {
           keyExtractor={(item, index) => `${index}`}
           numColumns={2}
         />
-        {/* {this.props.adminLogin.isLoggedIn && ( */}
-        <FAB
-          style={styles.fab}
-          color={'white'}
-          icon="plus"
-          onPress={() => this.props.navigation.navigate('addItem')}
-        />
-        {/* )} */}
+        {this.props.adminLogin.isLoggedIn && (
+          <FAB
+            style={styles.fab}
+            color={'white'}
+            icon="plus"
+            onPress={() => this.props.navigation.navigate('addItem')}
+          />
+        )}
 
         <Portal>
           <Dialog

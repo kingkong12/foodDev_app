@@ -1,7 +1,7 @@
 import adminCredentials from './mockData/adminCredentials';
 
 const initialState = {
-  loginDetails: adminCredentials,
+  loginDetails: {},
   isLoggedIn: false,
 };
 const adimAccess = (state = initialState, action) => {
@@ -10,6 +10,8 @@ const adimAccess = (state = initialState, action) => {
       return {...state, isLoggedIn: true};
     case 'logOut':
       return {...state, isLoggedIn: false};
+    case 'SET_ADMIN_CREDENTIALS':
+      return {...state, loginDetails: action.payload[0]};
     default:
       return state;
   }

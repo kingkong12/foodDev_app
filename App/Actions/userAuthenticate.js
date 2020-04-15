@@ -9,3 +9,10 @@ export const logOut = () => {
     type: 'logOut',
   };
 };
+
+export const setAdminCredentails = payload => {
+  return {
+    type: 'SET_ADMIN_CREDENTIALS',
+    payload: payload,
+  };
+};

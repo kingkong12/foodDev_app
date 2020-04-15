@@ -44,6 +44,16 @@ const itemReducer = (state = initialState, action) => {
 
     case 'UPDATE_DASHBOARD-ITEM':
       return {...state, list: [...state.list, {...action.payload}]};
+
+    case 'DELETE_DASHBAORD_ITEM':
+      let array = state.list;
+      for (let i = 0; i < array.length; i++) {
+        if (array[i].id === action.payload) {
+          array.splice(i, 1);
+        }
+      }
+      return {...state, list: array};
+
     case 'SHOW_ACTIVITY_INDICATOR':
       return {...state, spinner: true};
 

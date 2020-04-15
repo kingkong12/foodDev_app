@@ -43,3 +43,11 @@ export const updateDashboardItem = payload => {
     payload: payload,
   };
 };
+
+export const deleteDashBoardItem = payload => {
+  console.log('action');
+  return {
+    type: 'DELETE_DASHBAORD_ITEM',
+    payload: payload,
+  };
+};

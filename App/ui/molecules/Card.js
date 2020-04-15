@@ -9,7 +9,7 @@ export const CustomButton = props => {
   );
 };
 
-const Card = ({item, buyItem, itemInfo, ...props}) => {
+const Card = ({item, buyItem, onDelete, adminLogin, itemInfo, ...props}) => {
   return (
     <View style={styles.cardContainer}>
       <Image
@@ -24,7 +24,12 @@ const Card = ({item, buyItem, itemInfo, ...props}) => {
         </Text>
         <View style={styles.buttonContainer}>
           {/* <CustomButton title="Info" onPress={itemInfo} /> */}
-          <CustomButton title="Buy" onPress={buyItem} />
+
+          {adminLogin ? (
+            <CustomButton title="Delete" onPress={() => onDelete(item.id)} />
+          ) : (
+            <CustomButton title="Buy" onPress={buyItem} />
+          )}
         </View>
       </View>
     </View>

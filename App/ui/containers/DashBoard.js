@@ -6,10 +6,11 @@ import {
   addDashboardItem,
   showActivityIndicator,
   hideActivityIndicator,
+  deleteDashBoardItem,
 } from '../../actions/dashbaord.action';
 import {connect} from 'react-redux';
 import SearchBar from 'react-native-search-bar';
-import {FAB} from 'react-native-paper';
+import {FAB, Portal, Dialog, Paragraph, Button} from 'react-native-paper';
 import axios from 'axios';
 import Spinner from '../atoms/ActivityIndicator';
 import {basceApiUrl} from '../../api/baseUrl';
@@ -20,6 +21,8 @@ class DashBoard extends React.Component {
     this.state = {
       search: '',
       openFab: false,
+      showConfirmDialog: false,
+      deleteItemId: undefined,
     };
   }
 
@@ -54,7 +57,21 @@ class DashBoard extends React.Component {
     }
   };
 
+  deleteItem = () => {
+    const {deleteDashBoardItem} = this.props;
+    console.log('deleteDashBoardItem', this.props);
+    this.setState({showConfirmDialog: false});
+    let itemUrl = `${basceApiUrl}/items/${this.state.deleteItemId}/`;
+    axios
+      .delete(itemUrl)
+      .then(resp => deleteDashBoardItem(this.state.deleteItemId))
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   render() {
+    const {adminLogin} = this.props;
     const {list, spinner} = this.props.itemReducer;
     const searchedList =
       list.filter(
@@ -81,6 +98,10 @@ class DashBoard extends React.Component {
             {item}, // now we are looping through above data and generating multiple cards
           ) => (
             <Card
+              adminLogin={adminLogin}
+              onDelete={id =>
+                this.setState({showConfirmDialog: true, deleteItemId: id})
+              }
               item={item}
               itemInfo={() =>
                 //  these are callback function which will  open modal from routes js  and pass inforation to modal for diaplying
@@ -100,7 +121,7 @@ class DashBoard extends React.Component {
             />
           )}
           keyExtractor={(item, index) => `${index}`}
-          numColumns={2} //  this will dispaly 2 coulmns in UI
+          numColumns={2}
         />
         {/* {this.props.adminLogin.isLoggedIn && ( */}
         <FAB
@@ -110,6 +131,22 @@ class DashBoard extends React.Component {
           onPress={() => this.props.navigation.navigate('addItem')}
         />
         {/* )} */}
+
+        <Portal>
+          <Dialog
+            visible={this.state.showConfirmDialog}
+            onDismiss={() => this.setState({showConfirmDialog: false})}>
+            <Dialog.Title>Alert</Dialog.Title>
+            <Dialog.Content>
+              <Paragraph>
+                Are you sure you want to delete this item ?{' '}
+              </Paragraph>
+            </Dialog.Content>
+            <Dialog.Actions>
+              <Button onPress={this.deleteItem}> Ok </Button>
+            </Dialog.Actions>
+          </Dialog>
+        </Portal>
       </View>
     );
   }
@@ -165,6 +202,7 @@ export default connect(
   mapStateToProps,
   {
     addtoCartAction,
+    deleteDashBoardItem,
     addDashboardItem,
     showActivityIndicator,
     hideActivityIndicator,

@@ -36,3 +36,10 @@ export const hideActivityIndicator = payload => {
     type: 'HIDE_ACTIVITY_INDICATOR',
   };
 };
+
+export const updateDashboardItem = payload => {
+  return {
+    type: 'UPDATE_DASHBOARD-ITEM',
+    payload: payload,
+  };
+};

@@ -41,6 +41,9 @@ const itemReducer = (state = initialState, action) => {
       ];
 
       return {...state, cartItemsList: updatedCartItemsList};
+
+    case 'UPDATE_DASHBOARD-ITEM':
+      return {...state, list: [...state.list, {...action.payload}]};
     case 'SHOW_ACTIVITY_INDICATOR':
       return {...state, spinner: true};
 

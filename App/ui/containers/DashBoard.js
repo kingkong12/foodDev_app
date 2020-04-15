@@ -30,7 +30,7 @@ class DashBoard extends React.Component {
       hideActivityIndicator,
     } = this.props;
     let itemUrl = `${basceApiUrl}/items`;
-    console.log('ur; ', itemUrl);
+
     showActivityIndicator();
     axios
       .get(itemUrl)
@@ -63,6 +63,7 @@ class DashBoard extends React.Component {
             .toLowerCase()
             .indexOf(this.state.search.toLowerCase()) !== -1,
       ) || list;
+
     return (
       <View style={styles.container}>
         <View style={styles.searchBar}>

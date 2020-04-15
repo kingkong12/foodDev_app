@@ -3,15 +3,20 @@ import {View, StyleSheet} from 'react-native';
 import {TextInput, Button, Snackbar, Headline} from 'react-native-paper';
 import ReactChipsInput from 'react-native-chips';
 import {connect} from 'react-redux';
+import axios from 'axios';
+import {basceApiUrl} from '../../api/baseUrl';
+import {updateDashboardItem} from '../../actions/dashbaord.action';
 
 class AddINewtem extends React.Component {
   constructor() {
     super();
     this.state = {
-      itemName: '',
-      imageUrl: '',
-      price: '',
-      description: '',
+      itemName: 'Granular Bars',
+      imageUrl:
+        'https://i2.wp.com/www.foodfaithfitness.com/wp-content/uploads/2018/08/sugar-free-keto-low-carb-granola-bars-photograph.jpg',
+      price: 4,
+      description:
+        'A simple, soft and chewy granola bars recipe that’s delicious as-is or can be adapted based on your favorite dried fruits, nuts or chocolate',
       ingredients: [],
       snackBar: {
         visiblity: false,
@@ -46,8 +51,10 @@ class AddINewtem extends React.Component {
   };
   onSubmitfun = () => {
     let {itemName, imageUrl, price, description, ingredients} = this.state;
+    let priceAsInteger = parseInt(price) || 10;
     let {list} = this.props.itemReducer;
-    console.log('prosp', this.state);
+    const {updateDashboardItem} = this.props;
+
     var reg = /^\d+$/;
     if (
       itemName === '' ||
@@ -55,13 +62,13 @@ class AddINewtem extends React.Component {
       price === '' ||
       description === ''
     ) {
-      // each field Validation
+      // price can accept integer with decimal
       this.toggleSnackBar(true, 'One or more Field is Emplty !');
     } else {
-      if (itemName.length < 6)
-        this.toggleSnackBar(true, 'Name cannot be less then 6 charachetrs !');
-      if (!reg.test(price))
-        this.toggleSnackBar(true, 'Price has to be a number!');
+      if (itemName.length < 4) {
+        this.toggleSnackBar(true, 'Name cannot be less then 4 charachetrs !');
+        return;
+      }
 
       let foundInCart = list.find(
         cartItemId =>
@@ -70,7 +77,22 @@ class AddINewtem extends React.Component {
       if (foundInCart) {
         this.toggleSnackBar(true, 'Item already exists');
       } else {
-        // const API = 'http://localhost:3000/items';
+        let itemUrl = `${basceApiUrl}/items`;
+        let newObejct = {
+          itemName: itemName,
+          url: imageUrl || '',
+          price: priceAsInteger,
+          information: description || '',
+          nutrients: ingredients || [],
+        };
+
+        axios
+          .post(itemUrl, newObejct)
+          .then(resp => {
+            updateDashboardItem(resp.data);
+            this.props.navigation.goBack();
+          })
+          .catch(error => console.log('error', error));
       }
     }
   };
@@ -102,7 +124,7 @@ class AddINewtem extends React.Component {
               dense
               keyboardType="numeric"
               label="Price"
-              value={this.state.price}
+              value={`${this.state.price}`}
               onChangeText={text => this.setState({price: text})}
             />
           </View>
@@ -110,7 +132,8 @@ class AddINewtem extends React.Component {
             <TextInput
               multiline
               label="Description"
-              value={this.state.description}
+              type
+              value={`${this.state.description}`}
               onChangeText={text => this.setState({description: text})}
             />
             <View style={styles.nutrientsContainer}>
@@ -191,5 +214,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {},
+  {updateDashboardItem},
 )(AddINewtem);
